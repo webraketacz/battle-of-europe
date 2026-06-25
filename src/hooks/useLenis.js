@@ -9,7 +9,10 @@ import Lenis from 'lenis'
 export function useLenis() {
   useEffect(() => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reduce) return
+    const coarse = window.matchMedia('(pointer: coarse)').matches
+    // On touch devices native momentum scrolling is far smoother than a JS
+    // rAF loop — skip Lenis entirely and let the browser handle it.
+    if (reduce || coarse) return
 
     const lenis = new Lenis({
       duration: 1.15,

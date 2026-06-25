@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { isLite } from '../hooks/useLite'
 
 const SETS = {
   A: [
@@ -16,7 +17,7 @@ const SETS = {
   ],
 }
 
-function Cube({ cfg, mx, my }) {
+function Cube({ cfg, mx, my, lite }) {
   const s = cfg.size
   const h = s / 2
   const px = useTransform(mx, (v) => v * cfg.depth * 60)
@@ -55,7 +56,10 @@ function Cube({ cfg, mx, my }) {
               width: '100%',
               height: '100%',
               transformStyle: 'preserve-3d',
-              animation: `spin3d ${cfg.dur}s linear infinite`,
+              // On phones, skip the continuous 3D spin (heavy compositing) — a
+              // gentle static tilt keeps the look without the cost.
+              animation: lite ? 'none' : `spin3d ${cfg.dur}s linear infinite`,
+              transform: lite ? 'rotateX(-18deg) rotateY(24deg)' : 'none',
             }}
           >
             {faceTransforms.map((t, i) => (
@@ -69,8 +73,6 @@ function Cube({ cfg, mx, my }) {
                   border: '1px solid rgba(255,255,255,.22)',
                   background: `linear-gradient(135deg, hsla(${cfg.hue},95%,62%,.20), hsla(${cfg.hue + 45},95%,58%,.04))`,
                   boxShadow: `inset 0 0 46px hsla(${cfg.hue},95%,60%,.30)`,
-                  backdropFilter: 'blur(2px)',
-                  WebkitBackdropFilter: 'blur(2px)',
                   transform: t,
                 }}
               />
@@ -98,11 +100,13 @@ export default function FloatingCubes({ variant = 'B' }) {
     return () => window.removeEventListener('mousemove', onMove)
   }, [mx, my])
 
-  const cubes = SETS[variant] || SETS.B
+  const lite = isLite()
+  // Fewer cubes on phones, and only the larger ones (less overdraw).
+  const cubes = (SETS[variant] || SETS.B).slice(0, lite ? 2 : 4)
   return (
     <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1 }} aria-hidden>
       {cubes.map((c) => (
-        <Cube key={c.id} cfg={c} mx={smx} my={smy} />
+        <Cube key={c.id} cfg={c} mx={smx} my={smy} lite={lite} />
       ))}
     </div>
   )

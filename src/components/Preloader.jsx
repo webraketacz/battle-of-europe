@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Wordmark from './Wordmark'
+import { isLite } from '../hooks/useLite'
 
 const EASE = [0.16, 1, 0.3, 1]
 
@@ -8,7 +9,8 @@ const EASE = [0.16, 1, 0.3, 1]
 export default function Preloader() {
   const [done, setDone] = useState(false)
   useEffect(() => {
-    const id = setTimeout(() => setDone(true), 1700)
+    // Shorter curtain on phones so content shows up faster.
+    const id = setTimeout(() => setDone(true), isLite() ? 1000 : 1700)
     return () => clearTimeout(id)
   }, [])
 

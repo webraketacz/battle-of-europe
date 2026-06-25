@@ -1,6 +1,8 @@
+import { useLite } from '../hooks/useLite'
+
 /**
  * Fixed full-screen film-grain + subtle scanline overlay. Pure CSS/SVG noise,
- * very cheap, adds a tactile "expensive print" texture over the whole page.
+ * adds a tactile "expensive print" texture over the whole page (desktop only).
  */
 const NOISE =
   "data:image/svg+xml;utf8," +
@@ -9,6 +11,10 @@ const NOISE =
   )
 
 export default function Grain() {
+  // A fixed, blend-mode overlay forces a full-page repaint on every scroll
+  // frame — too costly on phones, so we drop it there.
+  const lite = useLite()
+  if (lite) return null
   return (
     <div
       aria-hidden

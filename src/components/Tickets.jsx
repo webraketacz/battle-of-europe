@@ -4,14 +4,16 @@ import AnimatedText from './AnimatedText'
 import CtaButton from './CtaButton'
 import Countdown from './Countdown'
 import { TICKETS_URL } from '../data/content'
+import { useLite } from '../hooks/useLite'
 
 export default function Tickets({ t }) {
+  const lite = useLite()
   return (
     <section id="tickets" style={{ position: 'relative', textAlign: 'center', padding: '100px var(--pad) 110px', scrollMarginTop: 90, overflow: 'hidden' }}>
       <motion.div
         aria-hidden
-        animate={{ scale: [1, 1.15, 1], opacity: [0.7, 1, 0.7] }}
-        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+        animate={lite ? undefined : { scale: [1, 1.15, 1], opacity: [0.7, 1, 0.7] }}
+        transition={lite ? undefined : { duration: 7, repeat: Infinity, ease: 'easeInOut' }}
         style={{ position: 'absolute', inset: 0, background: 'radial-gradient(60% 80% at 50% 40%,rgba(229,9,20,.2),transparent 70%)' }}
       />
       <div style={{ position: 'relative', maxWidth: 1100, margin: '0 auto' }}>

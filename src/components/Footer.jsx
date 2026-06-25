@@ -64,8 +64,24 @@ export default function Footer({ t }) {
         <Wordmark style={{ opacity: 0.07 }} />
       </div>
 
-      <div className="container" style={{ padding: '22px 0 30px', borderTop: '1px solid rgba(255,255,255,.06)', fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,.4)' }}>
-        © 2026 Battle of Europe · Shuffle School Kalafa Batela
+      <div
+        className="container footer-bottom"
+        style={{ padding: '22px 0 34px', borderTop: '1px solid rgba(255,255,255,.06)', fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,.4)' }}
+      >
+        <span>© 2026 Battle of Europe · Shuffle School Kalafa Batela</span>
+
+        <Magnetic strength={0.3}>
+          <a href="https://mjdesign.cz" target="_blank" rel="noopener noreferrer" className="made-by" aria-label="Made by Mjdesign">
+            <span className="made-by__label">Made by</span>
+            <span className="made-by__brand">
+              <span className="made-by__dot" />
+              Mjdesign
+            </span>
+            <svg className="made-by__arrow" width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <path d="M2.5 9.5L9.5 2.5M4 2.5h5.5V8" />
+            </svg>
+          </a>
+        </Magnetic>
       </div>
     </footer>
   )

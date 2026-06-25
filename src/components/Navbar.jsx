@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Magnetic from './Magnetic'
 import CtaButton from './CtaButton'
+import { useLite } from '../hooks/useLite'
 
 const EASE = [0.16, 1, 0.3, 1]
 
@@ -11,9 +12,16 @@ const FacebookIcon = () => (
   </svg>
 )
 
+// clip-path circle reveal on desktop; a cheaper fade+slide on phones (smoother).
 const menuVariants = {
-  closed: { clipPath: 'circle(0% at 92% 5%)', transition: { duration: 0.5, ease: EASE, when: 'afterChildren' } },
-  open: { clipPath: 'circle(150% at 92% 5%)', transition: { duration: 0.7, ease: EASE, when: 'beforeChildren', staggerChildren: 0.07, delayChildren: 0.1 } },
+  desktop: {
+    closed: { clipPath: 'circle(0% at 92% 5%)', transition: { duration: 0.5, ease: EASE, when: 'afterChildren' } },
+    open: { clipPath: 'circle(150% at 92% 5%)', transition: { duration: 0.7, ease: EASE, when: 'beforeChildren', staggerChildren: 0.07, delayChildren: 0.1 } },
+  },
+  lite: {
+    closed: { opacity: 0, y: -16, transition: { duration: 0.25, ease: EASE, when: 'afterChildren' } },
+    open: { opacity: 1, y: 0, transition: { duration: 0.32, ease: EASE, when: 'beforeChildren', staggerChildren: 0.05, delayChildren: 0.04 } },
+  },
 }
 const itemVariants = {
   closed: { y: 40, opacity: 0 },
@@ -23,6 +31,7 @@ const itemVariants = {
 export default function Navbar({ t, lang, onToggleLang }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const lite = useLite()
 
   useEffect(() => {
     const onScroll = () => setScrolled((window.scrollY || 0) > 24)
@@ -50,9 +59,9 @@ export default function Navbar({ t, lang, onToggleLang }) {
           zIndex: 50,
           height: scrolled ? 68 : 86,
           transition: 'height .35s var(--ease-out), background .35s, backdrop-filter .35s, border-color .35s',
-          background: scrolled ? 'rgba(8,4,13,.82)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(16px)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
+          background: scrolled ? (lite ? 'rgba(8,4,13,.96)' : 'rgba(8,4,13,.82)') : 'transparent',
+          backdropFilter: scrolled && !lite ? 'blur(16px)' : 'none',
+          WebkitBackdropFilter: scrolled && !lite ? 'blur(16px)' : 'none',
           borderBottom: `1px solid ${scrolled ? 'rgba(255,255,255,.08)' : 'transparent'}`,
         }}
       >
@@ -139,7 +148,7 @@ export default function Navbar({ t, lang, onToggleLang }) {
       <AnimatePresence>
         {open && (
           <motion.div
-            variants={menuVariants}
+            variants={lite ? menuVariants.lite : menuVariants.desktop}
             initial="closed"
             animate="open"
             exit="closed"

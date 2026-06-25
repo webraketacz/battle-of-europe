@@ -23,8 +23,8 @@ export default function Reveal({
     <M
       className={className}
       style={style}
-      initial={{ opacity: 0, y, filter: 'blur(6px)' }}
-      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+      initial={{ opacity: 0, y }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once, amount }}
       transition={{ duration, ease: EASE, delay }}
       {...rest}

@@ -4,10 +4,11 @@ import Wordmark from './Wordmark'
 import FloatingCubes from './FloatingCubes'
 import Countdown from './Countdown'
 import CtaButton from './CtaButton'
+import { useLite } from '../hooks/useLite'
 
 const EASE = [0.16, 1, 0.3, 1]
 
-function GlassCard({ label, value, delay }) {
+function GlassCard({ label, value, delay, lite }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30, rotateX: -12 }}
@@ -15,11 +16,12 @@ function GlassCard({ label, value, delay }) {
       transition={{ duration: 0.8, ease: EASE, delay }}
       whileHover={{ y: -6, borderColor: 'rgba(255,126,176,.55)' }}
       style={{
-        background: 'rgba(255,255,255,.05)',
+        // Solid translucent fill on mobile (backdrop-filter is a big repaint cost)
+        background: lite ? 'rgba(40,16,60,.55)' : 'rgba(255,255,255,.05)',
         border: '1px solid rgba(255,255,255,.12)',
         borderRadius: 18,
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
+        backdropFilter: lite ? 'none' : 'blur(12px)',
+        WebkitBackdropFilter: lite ? 'none' : 'blur(12px)',
         padding: '20px 22px',
       }}
     >
@@ -35,6 +37,7 @@ function GlassCard({ label, value, delay }) {
 
 export default function Hero({ t }) {
   const ref = useRef(null)
+  const lite = useLite()
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const y = useTransform(scrollYProgress, [0, 1], [0, 180])
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
@@ -54,14 +57,15 @@ export default function Hero({ t }) {
       }}
     >
       {/* animated gradient field */}
-      <motion.div style={{ position: 'absolute', inset: 0, scale }}>
+      <motion.div style={{ position: 'absolute', inset: 0, scale: lite ? 1 : scale }}>
         <div
           style={{
             position: 'absolute',
             inset: 0,
             background:
               'radial-gradient(110% 100% at 22% 18%,#ff2d78 0%,#a01f8f 32%,#5b1fb0 56%,#241047 78%,#08040d 100%)',
-            animation: 'huePulse 16s ease-in-out infinite',
+            // hue-rotate over a full-screen gradient repaints every frame — desktop only
+            animation: lite ? 'none' : 'huePulse 16s ease-in-out infinite',
           }}
         />
         <div
@@ -69,8 +73,9 @@ export default function Hero({ t }) {
             position: 'absolute',
             inset: '-25%',
             background: 'radial-gradient(42% 42% at 28% 30%,rgba(255,45,120,.6),transparent 70%)',
-            filter: 'blur(46px)',
-            animation: 'shadeDrift 24s ease-in-out infinite, shadeFade 10s ease-in-out infinite',
+            filter: lite ? 'blur(24px)' : 'blur(46px)',
+            animation: lite ? 'none' : 'shadeDrift 24s ease-in-out infinite, shadeFade 10s ease-in-out infinite',
+            opacity: lite ? 0.7 : 1,
           }}
         />
         <div
@@ -78,8 +83,9 @@ export default function Hero({ t }) {
             position: 'absolute',
             inset: '-25%',
             background: 'radial-gradient(48% 48% at 78% 66%,rgba(0,190,255,.4),transparent 70%)',
-            filter: 'blur(60px)',
-            animation: 'shadeDrift 32s ease-in-out infinite reverse, shadeFade 14s ease-in-out infinite',
+            filter: lite ? 'blur(28px)' : 'blur(60px)',
+            animation: lite ? 'none' : 'shadeDrift 32s ease-in-out infinite reverse, shadeFade 14s ease-in-out infinite',
+            opacity: lite ? 0.7 : 1,
           }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(8,4,13,.5),transparent 30%,rgba(8,4,13,.85))' }} />
@@ -127,9 +133,9 @@ export default function Hero({ t }) {
             perspective: 1000,
           }}
         >
-          <GlassCard label={t.lblDate} value={t.date} delay={0.8} />
-          <GlassCard label={t.lblVenue} value={t.venue} delay={0.9} />
-          <GlassCard label={t.lblFormat} value={t.format} delay={1.0} />
+          <GlassCard label={t.lblDate} value={t.date} delay={0.8} lite={lite} />
+          <GlassCard label={t.lblVenue} value={t.venue} delay={0.9} lite={lite} />
+          <GlassCard label={t.lblFormat} value={t.format} delay={1.0} lite={lite} />
         </div>
 
         {/* countdown */}
