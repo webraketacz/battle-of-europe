@@ -1,0 +1,22 @@
+{
+  "name": "battle-of-europe",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Battle of Europe — Shuffle & Cutting Shapes battle landing page. Premium animated React rebuild.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "framer-motion": "^11.3.19",
+    "lenis": "^1.1.13",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.2"
+  }
+}
