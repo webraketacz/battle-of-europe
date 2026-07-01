@@ -63,16 +63,27 @@ export default function Organizers({ t }) {
             {t.orgEyebrow}
           </Reveal>
           <AnimatedText text={t.orgTitle} className="section-title" style={{ marginTop: 14, fontSize: 'clamp(34px,4.5vw,64px)' }} delay={0.05} />
-          <Reveal as="p" delay={0.1} style={{ marginTop: 24, fontFamily: 'var(--font-body)', fontSize: 18, lineHeight: 1.65, color: 'rgba(255,255,255,.72)' }}>
-            {t.orgBody}
-          </Reveal>
-          <Reveal as="div" delay={0.18} style={{ marginTop: 26 }}>
-            <a
-              href="mailto:shufflepraque@gmail.com"
-              className="org-mail"
+          {t.orgBody.map((para, i) => (
+            <Reveal
+              key={i}
+              as="p"
+              delay={0.1 + i * 0.06}
+              style={{ marginTop: i === 0 ? 24 : 16, fontFamily: 'var(--font-body)', fontSize: 18, lineHeight: 1.65, color: 'rgba(255,255,255,.72)' }}
             >
-              shufflepraque@gmail.com
-            </a>
+              {para}
+            </Reveal>
+          ))}
+          <Reveal as="div" delay={0.28} style={{ marginTop: 30, display: 'flex', flexDirection: 'column', gap: 16 }}>
+            {t.orgContacts.map((c) => (
+              <div key={c.value}>
+                <div style={{ fontFamily: 'var(--font-body)', textTransform: 'uppercase', letterSpacing: '.16em', fontSize: 11, color: 'var(--pink-soft)', fontWeight: 600 }}>
+                  {c.label}
+                </div>
+                <a href={c.href} className="org-mail" style={{ marginTop: 4, display: 'inline-block' }}>
+                  {c.value}
+                </a>
+              </div>
+            ))}
           </Reveal>
         </div>
       </div>

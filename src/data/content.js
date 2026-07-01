@@ -24,13 +24,14 @@ export const partners = ['Partner', 'Partner', 'Partner', 'Partner', 'Partner', 
 export const content = {
   cz: {
     cta: 'Koupit lístek',
+    announce: 'Novinka: registrace do battlu probíhají pouze online před akcí.',
     heroSub: 'Shuffle & Cutting shapes competition',
     date: '24. října 2026',
     venue: 'OX Club Prague',
     lblDate: 'Datum',
     lblVenue: 'Místo',
     lblFormat: 'Formát',
-    format: 'Battle 1v1',
+    format: 'Battle 1v1 + Team Choreo',
     countdownLabels: { days: 'Dní', hours: 'Hodin', mins: 'Minut', secs: 'Vteřin' },
     nav: [
       { href: '#about', label: 'O battlu' },
@@ -41,12 +42,12 @@ export const content = {
     aboutEyebrow: 'Battle of Europe',
     aboutTitle: 'Informace o battlu',
     aboutBody: [
-      'Třetí ročník Battle of Europe se odehraje 24. října 2026 v pražském OX Clubu. Hlavní disciplínou je oblíbená Battle 1v1, ve které se nejlepší evropští tanečníci utkají o nadvládu na parketu i o hodnotné ceny.',
+      'Čtvrtý ročník Battle of Europe se odehraje 24. října 2026 v pražském OX Clubu. Hlavními disciplínami jsou oblíbená Battle 1v1 a The Best Team Choreo Competition, ve kterých se nejlepší evropští tanečníci utkají o nadvládu na parketu i o hodnotné ceny.',
       'Kromě hlavního battlu na tebe čekají workshopy se zkušenými lektory pod taktovkou „Behind the Steps“ — prostor, kde se posuneš dál a načerpáš novou energii i kontakty z celé shuffle & cutting shapes komunity.',
       'Atmosféra, hudba a tanec na jednom místě. Ať jsi ostřílený dancer, nebo si chceš jen užít show — tady jsi přesně na svém.',
     ],
     aboutStats: [
-      { value: '3.', label: 'Ročník' },
+      { value: '4.', label: 'Ročník' },
       { value: '1v1', label: 'Battle formát' },
       { value: '4', label: 'Judges z EU' },
       { value: '500+', label: 'Tanečníků' },
@@ -61,9 +62,17 @@ export const content = {
     partnersEyebrow: 'Partneři',
     partnersTitle: 'Bez nich by to nešlo',
     orgEyebrow: 'Pořadatelé',
-    orgTitle: 'Kdo za tím stojí',
-    orgBody:
-      'Battle of Europe stojí na Shuffle School Kalafa Batela — partě, která žije pro shuffle, cutting shapes a komunitu kolem nich. Spojuje nás roky na parketu, stovky workshopů a jediný cíl: přivést do Prahy nejlepší evropský battle.',
+    orgTitle: 'Kdo za Battle of Europe stojí',
+    orgBody: [
+      'Jsme Matyáš a Daniel a jsme moc rádi, že se Battle of Europe bude konat v Praze už počtvrté!',
+      'Na taneční scéně působíme přes 9 let – od vedení kurzů shufflu všech úrovní až po organizaci menších battlů, které postupně vyrostly v dnešní velkou evropskou událost.',
+      'Naším cílem je přinášet taneční komunitě nejen skvělý zážitek a jedinečnou show, ale i prostor pro ty nejlepší taneční výkony v krásném prostředí. Každý ročník posouváme hranice dál – chceme, aby byl Battle of Europe pokaždé větší, silnější a nezapomenutelnější!',
+    ],
+    orgContacts: [
+      { label: 'E-mail pro dotazy k battlu', value: 'shuffleprague@gmail.com', href: 'mailto:shuffleprague@gmail.com' },
+      { label: 'E-mail pro obecné dotazy', value: 'shufflekalafa@gmail.com', href: 'mailto:shufflekalafa@gmail.com' },
+      { label: 'Telefon', value: '+420 775 611 192', href: 'tel:+420775611192' },
+    ],
     ticketsTitle: 'Buď u toho',
     ticketsSub: 'Vstupenky v omezeném počtu. Zajisti si své místo na parketu.',
     footerTag: 'Shuffle & cutting shapes battle v srdci Prahy.',
@@ -107,13 +116,14 @@ export const content = {
   },
   en: {
     cta: 'Get ticket',
+    announce: 'New: battle registration is online only, ahead of the event.',
     heroSub: 'Shuffle & Cutting shapes competition',
     date: 'October 24, 2026',
     venue: 'OX Club Prague',
     lblDate: 'Date',
     lblVenue: 'Venue',
     lblFormat: 'Format',
-    format: 'Battle 1v1',
+    format: 'Battle 1v1 + Team Choreo',
     countdownLabels: { days: 'Days', hours: 'Hours', mins: 'Mins', secs: 'Secs' },
     nav: [
       { href: '#about', label: 'About' },
@@ -124,12 +134,12 @@ export const content = {
     aboutEyebrow: 'Battle of Europe',
     aboutTitle: 'About the battle',
     aboutBody: [
-      'The third edition of Battle of Europe goes down on October 24, 2026 at OX Club Prague. The headline format is the beloved 1v1 Battle, where Europe’s best dancers clash for the crown and serious prizes.',
+      'The fourth edition of Battle of Europe goes down on October 24, 2026 at OX Club Prague. The headline formats are the beloved 1v1 Battle and The Best Team Choreo Competition, where Europe’s best dancers clash for the crown and serious prizes.',
       'Beyond the main battle, expect workshops with seasoned coaches under the “Behind the Steps” banner — a space to level up and soak in fresh energy and connections from the whole shuffle & cutting shapes scene.',
       'Atmosphere, music and dance in one place. Whether you’re a seasoned dancer or just here for the show — this is your spot.',
     ],
     aboutStats: [
-      { value: '3rd', label: 'Edition' },
+      { value: '4th', label: 'Edition' },
       { value: '1v1', label: 'Battle format' },
       { value: '4', label: 'EU judges' },
       { value: '500+', label: 'Dancers' },
@@ -144,9 +154,17 @@ export const content = {
     partnersEyebrow: 'Partners',
     partnersTitle: 'It wouldn’t work without them',
     orgEyebrow: 'Organizers',
-    orgTitle: 'The crew behind it',
-    orgBody:
-      'Battle of Europe is built by Shuffle School Kalafa Batela — a crew that lives for shuffle, cutting shapes and the community around them. Years on the floor, hundreds of workshops, one goal: bring Europe’s best battle to Prague.',
+    orgTitle: 'Who’s behind Battle of Europe',
+    orgBody: [
+      'We’re Matyáš and Daniel, and we’re thrilled that Battle of Europe is coming to Prague for the fourth time!',
+      'We’ve been part of the dance scene for over 9 years – from running shuffle courses for all levels to organizing smaller battles that gradually grew into today’s major European event.',
+      'Our goal is to bring the dance community not only a great experience and a unique show, but also space for the very best performances in a beautiful setting. Every edition we push the limits further – we want Battle of Europe to be bigger, stronger and more unforgettable every single time!',
+    ],
+    orgContacts: [
+      { label: 'Battle enquiries', value: 'shuffleprague@gmail.com', href: 'mailto:shuffleprague@gmail.com' },
+      { label: 'General enquiries', value: 'shufflekalafa@gmail.com', href: 'mailto:shufflekalafa@gmail.com' },
+      { label: 'Phone', value: '+420 775 611 192', href: 'tel:+420775611192' },
+    ],
     ticketsTitle: 'Be there',
     ticketsSub: 'Limited tickets available. Secure your spot on the floor.',
     footerTag: 'Shuffle & cutting shapes battle in the heart of Prague.',

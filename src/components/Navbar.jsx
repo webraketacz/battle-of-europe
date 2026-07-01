@@ -193,8 +193,8 @@ export default function Navbar({ t, lang, onToggleLang }) {
               <CtaButton href="#tickets" size="lg" onClick={() => setOpen(false)}>
                 {t.cta}
               </CtaButton>
-              <a href="mailto:shufflepraque@gmail.com" style={{ fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,.7)', textDecoration: 'none' }}>
-                shufflepraque@gmail.com
+              <a href="mailto:shuffleprague@gmail.com" style={{ fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,.7)', textDecoration: 'none' }}>
+                shuffleprague@gmail.com
               </a>
             </motion.div>
           </motion.div>

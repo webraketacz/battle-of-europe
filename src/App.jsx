@@ -40,7 +40,7 @@ export default function App() {
       <main>
         <Hero t={t} />
         <About t={t} />
-        <Aftermovie t={t} />
+        <Aftermovie t={t} aftermovieId="Fsk82gwyffY" />
         <Marquee />
         <Judges t={t} />
         <Program t={t} />

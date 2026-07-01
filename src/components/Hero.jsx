@@ -94,22 +94,67 @@ export default function Hero({ t }) {
       <FloatingCubes variant="B" />
 
       <motion.div style={{ position: 'relative', zIndex: 3, maxWidth: 1640, margin: '0 auto', width: '100%', y, opacity }}>
-        <motion.span
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: EASE, delay: 0.35 }}
-          style={{
-            display: 'inline-block',
-            fontFamily: 'var(--font-body)',
-            textTransform: 'uppercase',
-            letterSpacing: '.42em',
-            fontSize: 13,
-            color: 'rgba(255,255,255,.7)',
-            fontWeight: 600,
-          }}
-        >
-          {t.heroSub}
-        </motion.span>
+        {t.announce && (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: EASE, delay: 0.25 }}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 10,
+              marginBottom: 22,
+              padding: '9px 16px 9px 14px',
+              borderRadius: 999,
+              background: 'rgba(229,9,20,.14)',
+              border: '1px solid rgba(255,126,176,.45)',
+              backdropFilter: lite ? 'none' : 'blur(8px)',
+              WebkitBackdropFilter: lite ? 'none' : 'blur(8px)',
+            }}
+          >
+            <span
+              style={{
+                width: 9,
+                height: 9,
+                borderRadius: '50%',
+                background: 'var(--red)',
+                boxShadow: '0 0 0 4px rgba(229,9,20,.25)',
+                animation: lite ? 'none' : 'bobDown 2s ease-in-out infinite',
+                flex: 'none',
+              }}
+            />
+            <span
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontWeight: 600,
+                fontSize: 13,
+                lineHeight: 1.3,
+                letterSpacing: '.02em',
+                color: '#fff',
+              }}
+            >
+              {t.announce}
+            </span>
+          </motion.div>
+        )}
+        <div>
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: EASE, delay: 0.35 }}
+            style={{
+              display: 'inline-block',
+              fontFamily: 'var(--font-body)',
+              textTransform: 'uppercase',
+              letterSpacing: '.42em',
+              fontSize: 13,
+              color: 'rgba(255,255,255,.7)',
+              fontWeight: 600,
+            }}
+          >
+            {t.heroSub}
+          </motion.span>
+        </div>
 
         {/* wordmark reveal: clip up */}
         <div style={{ overflow: 'hidden', marginTop: 18 }}>
