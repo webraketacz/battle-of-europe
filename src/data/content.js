@@ -5,10 +5,11 @@ export const EVENT_DATE = '2026-10-24T12:00:00';
 export const TICKETS_URL = 'https://battleofeurope.framer.website';
 
 export const judges = [
-  { name: 'Ruko', country: 'CZ', img: './images/judge-ruko.jpg', role: 'Shuffle / Footwork' },
-  { name: 'Bernanfloww', country: 'ES', img: './images/judge-bernanfloww.jpg', role: 'Cutting shapes' },
-  { name: 'Gina', country: 'PT', img: './images/judge-gina.jpg', role: 'Freestyle' },
-  { name: 'Oddio', country: 'SK', img: './images/judge-oddio.jpg', role: 'Shuffle / Groove' },
+  { name: 'Ruko', img: './images/judge-ruko.jpg', country: { cz: 'Španělsko', en: 'Spain' } },
+  { name: 'Bernanfloww', img: './images/judge-bernanfloww.jpg', country: { cz: 'Kanárské ostrovy', en: 'Canary Islands' } },
+  { name: 'Gina', img: './images/judge-gina.jpg', country: { cz: 'Anglie', en: 'England' } },
+  { name: 'Oddio', img: './images/judge-oddio.jpg', country: { cz: 'USA', en: 'USA' } },
+  { name: 'Lukáš', img: './images/judge-lukas.jpg', country: { cz: 'Česko', en: 'Czechia' } },
 ];
 
 export const socials = [
@@ -49,7 +50,7 @@ export const content = {
     aboutStats: [
       { value: '4.', label: 'Ročník' },
       { value: '1v1', label: 'Battle formát' },
-      { value: '4', label: 'Judges z EU' },
+      { value: '5', label: 'Judges' },
       { value: '500+', label: 'Tanečníků' },
     ],
     afterEyebrow: 'Aftermovie',
@@ -141,7 +142,7 @@ export const content = {
     aboutStats: [
       { value: '4th', label: 'Edition' },
       { value: '1v1', label: 'Battle format' },
-      { value: '4', label: 'EU judges' },
+      { value: '5', label: 'Judges' },
       { value: '500+', label: 'Dancers' },
     ],
     afterEyebrow: 'Aftermovie',

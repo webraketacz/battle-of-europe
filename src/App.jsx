@@ -42,7 +42,7 @@ export default function App() {
         <About t={t} />
         <Aftermovie t={t} aftermovieId="Fsk82gwyffY" />
         <Marquee />
-        <Judges t={t} />
+        <Judges t={t} lang={lang} />
         <Program t={t} />
         <Partners t={t} />
         <Organizers t={t} />

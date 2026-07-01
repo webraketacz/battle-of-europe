@@ -5,7 +5,7 @@ import Reveal from './Reveal'
 import AnimatedText from './AnimatedText'
 import { judges } from '../data/content'
 
-function JudgeCard({ j, i }) {
+function JudgeCard({ j, i, lang }) {
   const ref = useRef(null)
 
   // pointer-tilt (3D) on fine pointers
@@ -35,34 +35,16 @@ function JudgeCard({ j, i }) {
       <div style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden' }}>
         <img src={j.img} alt={j.name} className="judge-img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} draggable={false} />
         <span style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,transparent 40%,rgba(8,4,13,.92))' }} />
-        <span
-          style={{
-            position: 'absolute',
-            top: 16,
-            left: 16,
-            fontFamily: 'var(--font-body)',
-            fontWeight: 700,
-            fontSize: 12,
-            letterSpacing: '.16em',
-            textTransform: 'uppercase',
-            color: '#fff',
-            background: 'rgba(229,9,20,.9)',
-            padding: '6px 12px',
-            borderRadius: 999,
-          }}
-        >
-          {j.country}
-        </span>
       </div>
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '22px 24px' }}>
         <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 32, textTransform: 'uppercase', transform: 'skewX(-6deg)' }}>{j.name}</h3>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,.62)', marginTop: 4 }}>{j.role}</p>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,.62)', marginTop: 4 }}>{j.country[lang] || j.country.cz}</p>
       </div>
     </motion.article>
   )
 }
 
-export default function Judges({ t }) {
+export default function Judges({ t, lang = 'cz' }) {
   const trackRef = useRef(null)
   const scrollBy = (dx) => trackRef.current?.scrollBy({ left: dx, behavior: 'smooth' })
 
@@ -96,7 +78,7 @@ export default function Judges({ t }) {
 
       <div ref={trackRef} className="no-bar judge-track">
         {judges.map((j, i) => (
-          <JudgeCard key={j.name} j={j} i={i} />
+          <JudgeCard key={j.name} j={j} i={i} lang={lang} />
         ))}
       </div>
     </section>
