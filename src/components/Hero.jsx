@@ -1,7 +1,6 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Wordmark from './Wordmark'
-import FloatingCubes from './FloatingCubes'
 import Countdown from './Countdown'
 import CtaButton from './CtaButton'
 import { useLite } from '../hooks/useLite'
@@ -90,8 +89,6 @@ export default function Hero({ t }) {
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(8,4,13,.5),transparent 30%,rgba(8,4,13,.85))' }} />
       </motion.div>
-
-      <FloatingCubes variant="B" />
 
       <motion.div style={{ position: 'relative', zIndex: 3, maxWidth: 1640, margin: '0 auto', width: '100%', y, opacity }}>
         {t.announce && (
