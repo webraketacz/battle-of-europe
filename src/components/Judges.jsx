@@ -34,7 +34,8 @@ function JudgeCard({ j, i, lang, t }) {
         <span className="judge-photo__scrim" />
         <div className="judge-name">
           <h3>{j.name}</h3>
-          {country && <p>{country}</p>}
+          {/* rendered even when empty so names keep a common baseline across cards */}
+          <p>{country || ' '}</p>
         </div>
       </div>
 
