@@ -14,7 +14,7 @@ export default function Tickets({ t }) {
         aria-hidden
         animate={lite ? undefined : { scale: [1, 1.15, 1], opacity: [0.7, 1, 0.7] }}
         transition={lite ? undefined : { duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-        style={{ position: 'absolute', inset: 0, background: 'radial-gradient(60% 80% at 50% 40%,rgba(229,9,20,.2),transparent 70%)' }}
+        style={{ position: 'absolute', inset: 0, background: 'radial-gradient(60% 80% at 50% 40%,rgba(249, 4, 1,.2),transparent 70%)' }}
       />
       <div style={{ position: 'relative', maxWidth: 1100, margin: '0 auto' }}>
         <AnimatedText text={t.ticketsTitle} className="section-title" style={{ fontSize: 'clamp(40px,8vw,110px)', margin: '0 auto' }} />

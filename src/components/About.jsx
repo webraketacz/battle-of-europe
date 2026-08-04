@@ -1,6 +1,12 @@
 import Reveal from './Reveal'
 import AnimatedText from './AnimatedText'
 
+const ArrowIcon = () => (
+  <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8">
+    <path d="M2.5 9.5L9.5 2.5M4 2.5h5.5V8" />
+  </svg>
+)
+
 export default function About({ t }) {
   return (
     <section id="about" className="container" style={{ padding: '130px var(--pad)', scrollMarginTop: 90 }}>
@@ -22,35 +28,21 @@ export default function About({ t }) {
         ))}
       </div>
 
-      {/* stat strip */}
-      <div
-        style={{
-          marginTop: 70,
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit,minmax(140px,1fr))',
-          gap: 1,
-          background: 'rgba(255,255,255,.09)',
-          border: '1px solid rgba(255,255,255,.09)',
-          borderRadius: 22,
-          overflow: 'hidden',
-        }}
-      >
-        {t.aboutStats.map((s, i) => (
-          <Reveal
-            key={i}
-            delay={i * 0.08}
-            y={24}
-            style={{ background: 'var(--bg)', padding: '30px 26px' }}
-          >
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(38px,5vw,58px)', lineHeight: 1, transform: 'skewX(-6deg)', color: '#fff' }}>
-              {s.value}
-            </div>
-            <div style={{ marginTop: 10, fontFamily: 'var(--font-body)', fontSize: 13, letterSpacing: '.16em', textTransform: 'uppercase', color: 'var(--pink-soft)', fontWeight: 600 }}>
-              {s.label}
-            </div>
-          </Reveal>
-        ))}
-      </div>
+      {/* the old stat strip is replaced by direct links into the rules section */}
+      <Reveal as="div" y={24} delay={0.1} style={{ marginTop: 54, display: 'flex', flexWrap: 'wrap', gap: 14 }}>
+        <a href="#rules-1v1" className="btn btn--outline">
+          {t.rulesCta1v1}
+          <span className="btn__icon">
+            <ArrowIcon />
+          </span>
+        </a>
+        <a href="#rules-team" className="btn btn--outline">
+          {t.rulesCtaTeam}
+          <span className="btn__icon">
+            <ArrowIcon />
+          </span>
+        </a>
+      </Reveal>
     </section>
   )
 }

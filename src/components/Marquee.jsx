@@ -68,7 +68,7 @@ export default function Marquee() {
         padding: '36px 0',
         borderTop: '1px solid rgba(255,255,255,.08)',
         borderBottom: '1px solid rgba(255,255,255,.08)',
-        background: 'linear-gradient(90deg,#12081c,#1e0c2c,#12081c)',
+        background: 'linear-gradient(90deg,#05050a,#0c2671,#05050a)',
         overflow: 'hidden',
       }}
     >

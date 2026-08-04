@@ -13,7 +13,7 @@ function GlassCard({ label, value, delay, lite }) {
       initial={{ opacity: 0, y: 30, rotateX: -12 }}
       animate={{ opacity: 1, y: 0, rotateX: 0 }}
       transition={{ duration: 0.8, ease: EASE, delay }}
-      whileHover={{ y: -6, borderColor: 'rgba(255,126,176,.55)' }}
+      whileHover={{ y: -6, borderColor: 'rgba(126, 162, 255,.55)' }}
       style={{
         // Solid translucent fill on mobile (backdrop-filter is a big repaint cost)
         background: lite ? 'rgba(40,16,60,.55)' : 'rgba(255,255,255,.05)',
@@ -24,7 +24,7 @@ function GlassCard({ label, value, delay, lite }) {
         padding: '20px 22px',
       }}
     >
-      <div style={{ fontFamily: 'var(--font-body)', textTransform: 'uppercase', letterSpacing: '.2em', fontSize: 12, color: 'var(--pink-soft)', fontWeight: 600 }}>
+      <div style={{ fontFamily: 'var(--font-body)', textTransform: 'uppercase', letterSpacing: '.2em', fontSize: 12, color: 'var(--blue-soft)', fontWeight: 600 }}>
         {label}
       </div>
       <div style={{ fontFamily: 'var(--font-display)', fontSize: 26, textTransform: 'uppercase', transform: 'skewX(-6deg)', marginTop: 6 }}>
@@ -57,37 +57,48 @@ export default function Hero({ t }) {
     >
       {/* animated gradient field */}
       <motion.div style={{ position: 'absolute', inset: 0, scale: lite ? 1 : scale }}>
+        {/* black base with the deep blue bleeding in from the top right,
+            mirroring the brand board */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
             background:
-              'radial-gradient(110% 100% at 22% 18%,#ff2d78 0%,#a01f8f 32%,#5b1fb0 56%,#241047 78%,#08040d 100%)',
-            // hue-rotate over a full-screen gradient repaints every frame — desktop only
-            animation: lite ? 'none' : 'huePulse 16s ease-in-out infinite',
+              'radial-gradient(120% 110% at 80% 8%,#0c2671 0%,#0a1230 34%,#05050a 72%,#05050a 100%)',
           }}
         />
+        {/* red wash, bottom left */}
         <div
           style={{
             position: 'absolute',
             inset: '-25%',
-            background: 'radial-gradient(42% 42% at 28% 30%,rgba(255,45,120,.6),transparent 70%)',
+            background: 'radial-gradient(44% 44% at 18% 78%,rgba(249,4,1,.55),transparent 70%)',
             filter: lite ? 'blur(24px)' : 'blur(46px)',
             animation: lite ? 'none' : 'shadeDrift 24s ease-in-out infinite, shadeFade 10s ease-in-out infinite',
             opacity: lite ? 0.7 : 1,
           }}
         />
+        {/* blue wash, top right */}
         <div
           style={{
             position: 'absolute',
             inset: '-25%',
-            background: 'radial-gradient(48% 48% at 78% 66%,rgba(0,190,255,.4),transparent 70%)',
+            background: 'radial-gradient(46% 46% at 82% 24%,rgba(28,86,255,.5),transparent 70%)',
             filter: lite ? 'blur(28px)' : 'blur(60px)',
             animation: lite ? 'none' : 'shadeDrift 32s ease-in-out infinite reverse, shadeFade 14s ease-in-out infinite',
             opacity: lite ? 0.7 : 1,
           }}
         />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(8,4,13,.5),transparent 30%,rgba(8,4,13,.85))' }} />
+        {/* deep red pooling in the lower left corner */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'radial-gradient(70% 60% at 8% 100%,#470100,transparent 70%)',
+            opacity: 0.85,
+          }}
+        />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(5, 5, 10,.5),transparent 30%,rgba(5, 5, 10,.85))' }} />
       </motion.div>
 
       <motion.div style={{ position: 'relative', zIndex: 3, maxWidth: 1640, margin: '0 auto', width: '100%', y, opacity }}>
@@ -96,42 +107,15 @@ export default function Hero({ t }) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: EASE, delay: 0.25 }}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 10,
-              marginBottom: 22,
-              padding: '9px 16px 9px 14px',
-              borderRadius: 999,
-              background: 'rgba(229,9,20,.14)',
-              border: '1px solid rgba(255,126,176,.45)',
-              backdropFilter: lite ? 'none' : 'blur(8px)',
-              WebkitBackdropFilter: lite ? 'none' : 'blur(8px)',
-            }}
+            className="announce"
+            style={{ marginBottom: 22 }}
+            role="status"
           >
-            <span
-              style={{
-                width: 9,
-                height: 9,
-                borderRadius: '50%',
-                background: 'var(--red)',
-                boxShadow: '0 0 0 4px rgba(229,9,20,.25)',
-                animation: lite ? 'none' : 'bobDown 2s ease-in-out infinite',
-                flex: 'none',
-              }}
-            />
-            <span
-              style={{
-                fontFamily: 'var(--font-body)',
-                fontWeight: 600,
-                fontSize: 13,
-                lineHeight: 1.3,
-                letterSpacing: '.02em',
-                color: '#fff',
-              }}
-            >
-              {t.announce}
+            <span className="announce__chip">
+              <span className="announce__dot" />
+              {t.announceLabel}
             </span>
+            <span className="announce__text">{t.announce}</span>
           </motion.div>
         )}
         <div>

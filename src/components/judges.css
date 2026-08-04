@@ -1,44 +1,173 @@
-.judge-track {
+.judge-grid {
   margin-top: 48px;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 22px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 8px var(--pad) 28px;
-  max-width: calc(var(--maxw) + 56px);
-  margin-left: auto;
-  margin-right: auto;
-  -webkit-overflow-scrolling: touch;
+  align-items: start;
+}
+@media (min-width: 1100px) {
+  .judge-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .judge-card {
-  scroll-snap-align: start;
-  flex: 0 0 300px;
-  max-width: 300px;
   border-radius: 24px;
   overflow: hidden;
   position: relative;
-  background: #0c0714;
+  background: linear-gradient(170deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
   border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), border-color 0.35s;
-  transform-style: preserve-3d;
-  will-change: transform;
+  transition: box-shadow 0.35s var(--ease-out), border-color 0.35s;
+  display: flex;
+  flex-direction: column;
 }
 .judge-card:hover {
-  box-shadow: 0 30px 70px rgba(229, 9, 20, 0.28);
-  border-color: rgba(255, 45, 120, 0.4);
+  box-shadow: 0 30px 70px -30px var(--red-glow);
+  border-color: rgba(249, 4, 1, 0.4);
 }
 
+.judge-photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #000;
+}
 .judge-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: transform 0.7s var(--ease-out);
 }
 .judge-card:hover .judge-img {
-  transform: scale(1.08);
+  transform: scale(1.06);
+}
+.judge-photo__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(5, 5, 10, 0.92));
+  pointer-events: none;
 }
 
-@media (min-width: 600px) {
-  .judge-card {
-    flex-basis: 340px;
-    max-width: 340px;
-  }
+/* Shown until a real photo exists at the referenced path, so a missing file
+   reads as a deliberate placeholder rather than a broken image. */
+.judge-photo__fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(70% 70% at 50% 35%, var(--blue-deep), #000 72%);
+  font-family: var(--font-display);
+  font-size: 84px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.16);
+  transform: skewX(-6deg);
+}
+
+.judge-name {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 18px;
+}
+.judge-name h3 {
+  font-family: var(--font-display);
+  font-size: 34px;
+  text-transform: uppercase;
+  transform: skewX(-6deg);
+  line-height: 1;
+}
+.judge-name p {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue-soft);
+  font-weight: 600;
+  margin-top: 7px;
+}
+
+.judge-body {
+  padding: 24px 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+.judge-bio {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.judge-quote {
+  position: relative;
+  padding-left: 18px;
+  border-left: 2px solid var(--red);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.62;
+  color: rgba(255, 255, 255, 0.62);
+  white-space: pre-line;
+}
+/* collapsed state: clamp to a few lines so cards stay even */
+.judge-quote--clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.judge-more {
+  align-self: flex-start;
+  margin-top: auto;
+  background: none;
+  border: 0;
+  padding: 0 0 3px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue-soft);
+  border-bottom: 1px solid rgba(126, 162, 255, 0.4);
+  transition: color 0.25s, border-color 0.25s;
+}
+.judge-more:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+/* ---- "to be announced" slot ---- */
+.judge-card--tbc {
+  border-style: dashed;
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.015);
+}
+.judge-card--tbc:hover {
+  box-shadow: none;
+  border-color: rgba(255, 255, 255, 0.28);
+}
+.judge-card--tbc .judge-photo {
+  background: #000;
+  display: grid;
+  place-items: center;
+}
+.judge-tbc-mark {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 6vw, 54px);
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.2);
+  transform: skewX(-6deg);
+}
+.judge-tbc-label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 600;
+  text-align: center;
 }

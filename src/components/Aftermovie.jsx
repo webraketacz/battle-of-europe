@@ -27,7 +27,7 @@ export default function Aftermovie({ t, aftermovieId = '' }) {
           overflow: 'hidden',
           border: '1px solid rgba(255,255,255,.12)',
           aspectRatio: '16/9',
-          background: '#0c0714',
+          background: '#0a0a14',
         }}
       >
         {playing && hasVid ? (
@@ -54,7 +54,7 @@ export default function Aftermovie({ t, aftermovieId = '' }) {
               whileHover={{ scale: 1.05 }}
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
             />
-            <span style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 50%,rgba(8,4,13,.15),rgba(8,4,13,.7))' }} />
+            <span style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 50%,rgba(5, 5, 10,.15),rgba(5, 5, 10,.7))' }} />
 
             {/* pulsing play */}
             <span style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', display: 'grid', placeItems: 'center' }}>
@@ -64,7 +64,7 @@ export default function Aftermovie({ t, aftermovieId = '' }) {
                   width: 96,
                   height: 96,
                   borderRadius: '50%',
-                  border: '1px solid rgba(229,9,20,.6)',
+                  border: '1px solid rgba(249, 4, 1,.6)',
                   animation: 'bobDown 2.4s ease-in-out infinite',
                 }}
               />
@@ -78,7 +78,7 @@ export default function Aftermovie({ t, aftermovieId = '' }) {
                   background: 'var(--red)',
                   display: 'grid',
                   placeItems: 'center',
-                  boxShadow: '0 12px 50px rgba(229,9,20,.6)',
+                  boxShadow: '0 12px 50px rgba(249, 4, 1,.6)',
                 }}
               >
                 <svg width="30" height="34" viewBox="0 0 30 34" fill="#fff">

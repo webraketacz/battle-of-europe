@@ -59,7 +59,7 @@ export default function Navbar({ t, lang, onToggleLang }) {
           zIndex: 50,
           height: scrolled ? 68 : 86,
           transition: 'height .35s var(--ease-out), background .35s, backdrop-filter .35s, border-color .35s',
-          background: scrolled ? (lite ? 'rgba(8,4,13,.96)' : 'rgba(8,4,13,.82)') : 'transparent',
+          background: scrolled ? (lite ? 'rgba(5, 5, 10,.96)' : 'rgba(5, 5, 10,.82)') : 'transparent',
           backdropFilter: scrolled && !lite ? 'blur(16px)' : 'none',
           WebkitBackdropFilter: scrolled && !lite ? 'blur(16px)' : 'none',
           borderBottom: `1px solid ${scrolled ? 'rgba(255,255,255,.08)' : 'transparent'}`,
@@ -85,7 +85,7 @@ export default function Navbar({ t, lang, onToggleLang }) {
                 overflow: 'hidden',
               }}
             >
-              <img src="./images/logo.jpg" alt="Shuffle School" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src="./images/logo.jpg" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </motion.span>
             <span
               style={{
@@ -94,13 +94,13 @@ export default function Navbar({ t, lang, onToggleLang }) {
                 fontStyle: 'italic',
                 fontSize: 15,
                 letterSpacing: '.04em',
-                lineHeight: 1,
+                lineHeight: 1.15,
                 textTransform: 'uppercase',
               }}
             >
-              Shuffle
+              Battle of
               <br />
-              School
+              Europe
             </span>
           </a>
 
@@ -156,7 +156,7 @@ export default function Navbar({ t, lang, onToggleLang }) {
               position: 'fixed',
               inset: 0,
               zIndex: 55,
-              background: 'radial-gradient(120% 100% at 80% 0%, #1a0a2e 0%, #0c0714 55%, #08040d 100%)',
+              background: 'radial-gradient(120% 100% at 80% 0%, #0c2671 0%, #0a0a14 55%, #05050a 100%)',
               display: 'flex',
               flexDirection: 'column',
               padding: 'clamp(24px,6vw,64px)',
@@ -164,7 +164,7 @@ export default function Navbar({ t, lang, onToggleLang }) {
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span style={{ fontFamily: 'var(--font-body)', fontWeight: 800, fontStyle: 'italic', textTransform: 'uppercase', fontSize: 15, lineHeight: 1 }}>
-                Shuffle School
+                Battle of Europe
               </span>
               <button onClick={() => setOpen(false)} aria-label="Close" className="icon-btn" style={{ width: 52, height: 52, fontSize: 26 }}>
                 ×
@@ -181,7 +181,7 @@ export default function Navbar({ t, lang, onToggleLang }) {
                   className="menu-link"
                   whileHover={{ x: 18 }}
                 >
-                  <span style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--pink)', marginRight: 16 }}>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--red)', marginRight: 16 }}>
                     0{i + 1}
                   </span>
                   {n.label}

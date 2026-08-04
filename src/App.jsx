@@ -9,6 +9,7 @@ import ScrollProgress from './components/ScrollProgress'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
+import Rules from './components/Rules'
 import Aftermovie from './components/Aftermovie'
 import Marquee from './components/Marquee'
 import Judges from './components/Judges'
@@ -40,6 +41,7 @@ export default function App() {
       <main>
         <Hero t={t} />
         <About t={t} />
+        <Rules t={t} />
         <Aftermovie t={t} aftermovieId="Fsk82gwyffY" />
         <Marquee />
         <Judges t={t} lang={lang} />

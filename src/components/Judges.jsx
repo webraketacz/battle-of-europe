@@ -1,85 +1,89 @@
-import { useRef } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import './judges.css'
 import Reveal from './Reveal'
 import AnimatedText from './AnimatedText'
 import { judges } from '../data/content'
 
-function JudgeCard({ j, i, lang }) {
-  const ref = useRef(null)
+const EASE = [0.16, 1, 0.3, 1]
 
-  // pointer-tilt (3D) on fine pointers
-  function onMove(e) {
-    const el = ref.current
-    if (!el || !window.matchMedia('(pointer:fine)').matches) return
-    const r = el.getBoundingClientRect()
-    const px = (e.clientX - r.left) / r.width - 0.5
-    const py = (e.clientY - r.top) / r.height - 0.5
-    el.style.transform = `perspective(900px) rotateY(${px * 10}deg) rotateX(${-py * 10}deg) translateY(-8px)`
-  }
-  function reset() {
-    if (ref.current) ref.current.style.transform = ''
-  }
+function JudgeCard({ j, i, lang, t }) {
+  const [expanded, setExpanded] = useState(false)
+  // A judge photo may not be uploaded yet — fall back to an initial tile.
+  const [imgOk, setImgOk] = useState(true)
+
+  const country = j.country?.[lang] || j.country?.cz || ''
+  const bio = j.bio?.[lang] || j.bio?.cz || ''
 
   return (
     <motion.article
-      ref={ref}
-      onMouseMove={onMove}
-      onMouseLeave={reset}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.08 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.7, ease: EASE, delay: (i % 3) * 0.08 }}
       className="judge-card"
     >
-      <div style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden' }}>
-        <img src={j.img} alt={j.name} className="judge-img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} draggable={false} />
-        <span style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,transparent 40%,rgba(8,4,13,.92))' }} />
+      <div className="judge-photo">
+        {imgOk ? (
+          <img src={j.img} alt={j.name} className="judge-img" draggable={false} onError={() => setImgOk(false)} />
+        ) : (
+          <span className="judge-photo__fallback" aria-hidden>
+            {j.name.charAt(0)}
+          </span>
+        )}
+        <span className="judge-photo__scrim" />
+        <div className="judge-name">
+          <h3>{j.name}</h3>
+          {country && <p>{country}</p>}
+        </div>
       </div>
-      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '22px 24px' }}>
-        <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 32, textTransform: 'uppercase', transform: 'skewX(-6deg)' }}>{j.name}</h3>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,.62)', marginTop: 4 }}>{j.country[lang] || j.country.cz}</p>
+
+      <div className="judge-body">
+        {bio && <p className="judge-bio">{bio}</p>}
+        {j.quote && (
+          <>
+            <blockquote className={`judge-quote${expanded ? '' : ' judge-quote--clamped'}`}>{j.quote}</blockquote>
+            <button className="judge-more" onClick={() => setExpanded((v) => !v)} aria-expanded={expanded}>
+              {expanded ? t.judgeLess : t.judgeMore}
+            </button>
+          </>
+        )}
+      </div>
+    </motion.article>
+  )
+}
+
+function TbcCard({ i, t }) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.7, ease: EASE, delay: (i % 3) * 0.08 }}
+      className="judge-card judge-card--tbc"
+    >
+      <div className="judge-photo">
+        <span className="judge-tbc-mark">TBC</span>
+      </div>
+      <div className="judge-body">
+        <p className="judge-tbc-label">{t.judgeTbc}</p>
       </div>
     </motion.article>
   )
 }
 
 export default function Judges({ t, lang = 'cz' }) {
-  const trackRef = useRef(null)
-  const scrollBy = (dx) => trackRef.current?.scrollBy({ left: dx, behavior: 'smooth' })
-
-  const ArrowBtn = ({ dir }) => (
-    <button
-      onClick={() => scrollBy(dir * 380)}
-      aria-label={dir < 0 ? 'Prev' : 'Next'}
-      className="icon-btn icon-btn--accent"
-      style={{ width: 54, height: 54 }}
-    >
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <path d={dir < 0 ? 'M11 4l-5 5 5 5' : 'M7 4l5 5-5 5'} />
-      </svg>
-    </button>
-  )
-
   return (
-    <section id="judges" style={{ position: 'relative', padding: '120px 0', scrollMarginTop: 90 }}>
-      <div className="container" style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap' }}>
-        <div>
-          <Reveal as="div" className="eyebrow" y={18} duration={0.7}>
-            {t.judgesEyebrow}
-          </Reveal>
-          <AnimatedText text={t.judgesTitle} className="section-title" style={{ marginTop: 14, fontSize: 'clamp(36px,5.5vw,76px)' }} delay={0.05} />
-        </div>
-        <div style={{ display: 'flex', gap: 12 }}>
-          <ArrowBtn dir={-1} />
-          <ArrowBtn dir={1} />
-        </div>
-      </div>
+    <section id="judges" className="container" style={{ padding: '120px var(--pad)', scrollMarginTop: 90 }}>
+      <Reveal as="div" className="eyebrow" y={18} duration={0.7}>
+        {t.judgesEyebrow}
+      </Reveal>
+      <AnimatedText text={t.judgesTitle} className="section-title" style={{ marginTop: 14, fontSize: 'clamp(36px,5.5vw,76px)' }} delay={0.05} />
 
-      <div ref={trackRef} className="no-bar judge-track">
-        {judges.map((j, i) => (
-          <JudgeCard key={j.name} j={j} i={i} lang={lang} />
-        ))}
+      <div className="judge-grid">
+        {judges.map((j, i) =>
+          j.tbc ? <TbcCard key={`tbc-${i}`} i={i} t={t} /> : <JudgeCard key={j.name} j={j} i={i} lang={lang} t={t} />
+        )}
       </div>
     </section>
   )

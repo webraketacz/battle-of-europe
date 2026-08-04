@@ -77,7 +77,7 @@ export default function Program({ t }) {
                 transition={{ duration: 0.5, ease: EASE }}
                 className="program-row"
               >
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(20px,2vw,26px)', color: 'var(--pink)', transform: 'skewX(-6deg)' }}>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(20px,2vw,26px)', color: 'var(--red)', transform: 'skewX(-6deg)' }}>
                   {it.time}
                 </div>
                 <div>

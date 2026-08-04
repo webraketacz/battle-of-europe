@@ -24,7 +24,7 @@ export default function Preloader() {
             position: 'fixed',
             inset: 0,
             zIndex: 9500,
-            background: 'radial-gradient(120% 100% at 50% 30%, #1a0a2e 0%, #0c0714 60%, #08040d 100%)',
+            background: 'radial-gradient(120% 100% at 50% 30%, #0c2671 0%, #0a0a14 60%, #05050a 100%)',
             display: 'grid',
             placeItems: 'center',
             padding: '0 8vw',
@@ -38,7 +38,7 @@ export default function Preloader() {
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 1.3, ease: EASE, delay: 0.1 }}
-              style={{ marginTop: 22, height: 2, transformOrigin: '0% 50%', background: 'linear-gradient(90deg,var(--pink),var(--red),transparent)' }}
+              style={{ marginTop: 22, height: 2, transformOrigin: '0% 50%', background: 'linear-gradient(90deg,var(--red),var(--red),transparent)' }}
             />
             <motion.span
               initial={{ opacity: 0 }}

@@ -46,7 +46,7 @@ function Unit({ value, label }) {
           fontSize: 11,
           letterSpacing: '0.2em',
           textTransform: 'uppercase',
-          color: 'var(--pink-soft)',
+          color: 'var(--blue-soft)',
           fontWeight: 600,
         }}
       >

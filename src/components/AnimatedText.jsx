@@ -31,7 +31,18 @@ export default function AnimatedText({
       {words.map((word, i) => (
         <span
           key={i}
-          style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'top', paddingBottom: '0.12em' }}
+          style={{
+            display: 'inline-block',
+            overflow: 'hidden',
+            verticalAlign: 'top',
+            paddingBottom: '0.12em',
+            // Headroom for Czech diacritics (Š, Ž, Í, Ř…). The display face draws
+            // carons/acutes above cap height, and without this the clip box —
+            // sized by the tight display line-height — shears them off. The
+            // negative margin keeps the heading's visual position unchanged.
+            paddingTop: '0.26em',
+            marginTop: '-0.26em',
+          }}
         >
           <motion.span
             style={{ display: 'inline-block', ...wordStyle }}

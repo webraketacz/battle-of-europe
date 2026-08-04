@@ -12,22 +12,22 @@ export default function Organizers({ t }) {
   return (
     <section id="organizers" ref={ref} className="container" style={{ padding: '40px var(--pad) 120px', scrollMarginTop: 90 }}>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 56, alignItems: 'center' }}>
-        {/* photo stage */}
+        {/* logo stage */}
         <Reveal
           y={50}
           style={{
             position: 'relative',
             borderRadius: 26,
             overflow: 'hidden',
-            background: 'radial-gradient(circle at 50% 35%,#2a0e54,#0c0714)',
+            background: 'radial-gradient(circle at 50% 35%,#0c2671,#05050a)',
             border: '1px solid rgba(255,255,255,.1)',
             aspectRatio: '4/3',
             display: 'grid',
-            placeItems: 'end center',
+            placeItems: 'center',
           }}
         >
           {/* glow */}
-          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(45% 45% at 50% 45%,rgba(255,45,120,.35),transparent 70%)', filter: 'blur(20px)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(45% 45% at 50% 45%,rgba(28, 86, 255,.35),transparent 70%)', filter: 'blur(20px)' }} />
           {/* rotating dashed ring */}
           <motion.div
             style={{
@@ -44,13 +44,14 @@ export default function Organizers({ t }) {
             }}
           />
           <motion.img
-            src="./images/organizers.png"
-            alt={t.orgTitle}
+            src="./images/logo.jpg"
+            alt="Kalafa & Batela Shuffle School"
             style={{
               position: 'relative',
-              width: '82%',
+              width: '52%',
               height: 'auto',
               objectFit: 'contain',
+              borderRadius: '50%',
               y: photoY,
               filter: 'drop-shadow(0 24px 50px rgba(0,0,0,.55))',
             }}
@@ -73,10 +74,46 @@ export default function Organizers({ t }) {
               {para}
             </Reveal>
           ))}
+
+          <Reveal
+            as="figure"
+            delay={0.2}
+            style={{
+              marginTop: 28,
+              paddingLeft: 22,
+              borderLeft: '2px solid var(--red)',
+            }}
+          >
+            <blockquote
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: 18,
+                fontStyle: 'italic',
+                lineHeight: 1.6,
+                color: 'rgba(255,255,255,.88)',
+              }}
+            >
+              „{t.orgQuote}“
+            </blockquote>
+            <figcaption
+              style={{
+                marginTop: 14,
+                fontFamily: 'var(--font-body)',
+                fontSize: 13,
+                letterSpacing: '.1em',
+                textTransform: 'uppercase',
+                color: 'var(--blue-soft)',
+                fontWeight: 600,
+              }}
+            >
+              — {t.orgQuoteAuthor}
+            </figcaption>
+          </Reveal>
+
           <Reveal as="div" delay={0.28} style={{ marginTop: 30, display: 'flex', flexDirection: 'column', gap: 16 }}>
             {t.orgContacts.map((c) => (
               <div key={c.value}>
-                <div style={{ fontFamily: 'var(--font-body)', textTransform: 'uppercase', letterSpacing: '.16em', fontSize: 11, color: 'var(--pink-soft)', fontWeight: 600 }}>
+                <div style={{ fontFamily: 'var(--font-body)', textTransform: 'uppercase', letterSpacing: '.16em', fontSize: 11, color: 'var(--blue-soft)', fontWeight: 600 }}>
                   {c.label}
                 </div>
                 <a href={c.href} className="org-mail" style={{ marginTop: 4, display: 'inline-block' }}>

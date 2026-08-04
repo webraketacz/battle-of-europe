@@ -1,15 +1,56 @@
 // All copy + structured data for the site, in both languages.
-// Mirrors the original Framer export 1:1.
 
 export const EVENT_DATE = '2026-10-24T12:00:00';
 export const TICKETS_URL = 'https://battleofeurope.framer.website';
 
+// Judges. `bio` is the Czech/English intro line written by the organizers;
+// `quote` is the judge's own statement and stays in English in both languages.
+// Entries with `tbc: true` render as a blank "to be announced" slot.
 export const judges = [
-  { name: 'Ruko', img: './images/judge-ruko.jpg', country: { cz: 'Španělsko', en: 'Spain' } },
-  { name: 'Bernanfloww', img: './images/judge-bernanfloww.jpg', country: { cz: 'Kanárské ostrovy', en: 'Canary Islands' } },
-  { name: 'Gina', img: './images/judge-gina.jpg', country: { cz: 'Anglie', en: 'England' } },
-  { name: 'Oddio', img: './images/judge-oddio.jpg', country: { cz: 'USA', en: 'USA' } },
-  { name: 'Lukáš', img: './images/judge-lukas.jpg', country: { cz: 'Česko', en: 'Czechia' } },
+  {
+    name: 'Siku',
+    img: './images/judge-siku.jpg',
+    country: { cz: 'Španělsko', en: 'Spain' },
+    bio: {
+      cz: 'Loňský vítěz Battle of Europe a výrazná tvář španělské scény se zkušenostmi z nejrůznějších mezinárodních akcí.',
+      en: 'Last year’s Battle of Europe winner and a standout face of the Spanish scene, with experience from international events of every kind.',
+    },
+    quote: `Hi! I’m Siku ❤️‍🔥
+With over ten years in the Cutting Shapes scene, dance has become a way for me to connect, express myself, and build community.
+
+I’ve had the opportunity to travel and meet different communities around the world. BoE 2025 was a truly special in my journey as a dancer, and being part of this edition from a different perspective means a lot to me.
+
+See you all very soon! Ready to give it everything on the dance floor! 🔥`,
+  },
+  {
+    name: 'Ciara',
+    img: './images/judge-ciara.jpg',
+    country: { cz: 'USA', en: 'USA' },
+    bio: {
+      cz: 'Porotkyně, která za námi přiletí až z amerického Texasu, kde působí také jako lektorka. Battlové zkušenosti má jako soutěžící i porotce.',
+      en: 'A judge flying in all the way from Texas, where she also teaches. She brings battle experience from both sides — as a competitor and as a judge.',
+    },
+    quote: `Hello everyone! ✨
+
+My name is Ciara, I’m from Texas, and I’ve been enjoying this dance for 11 years now. I’m fascinated by movement and how everything connects, from the mind and body to the feeling and flow! I especially love finding deep grooves and living inside a deep, heavy bassline. 🎶
+
+My favorite part about shuffling is seeing people get lost in the music, trust themselves, and let their personality shine. :)
+
+I’m beyond grateful to join the BoE panel, and thank you to everyone for this honor! Most of all, I’m excited to grow, connect, and share experiences. Let’s have the time of our lives!! 🚀🪩`,
+  },
+  {
+    name: 'Alison',
+    img: './images/judge-alison.jpg',
+    country: { cz: '', en: '' },
+    bio: { cz: '', en: '' },
+    quote: `Hi! I’m Alison, and I’ve been a shuffle/cutting shapes dancer for 8 years ❤️
+
+My approach to dance is closely tied to psychology, which is my profession. With that in mind, I work at the Wellbeing Project and develop my dance style from pure freestyle (with waacking and house influences).
+
+I can’t wait to see you all improvise and take over the dance floor at the upcoming Battle of Europe in Prague! I hope we’ll all have a great time together at this event 🫶🏻🫂`,
+  },
+  { tbc: true },
+  { tbc: true },
 ];
 
 export const socials = [
@@ -25,7 +66,8 @@ export const partners = ['Partner', 'Partner', 'Partner', 'Partner', 'Partner', 
 export const content = {
   cz: {
     cta: 'Koupit lístek',
-    announce: 'Novinka: registrace do battlu probíhají pouze online před akcí.',
+    announceLabel: 'Pozor',
+    announce: 'Registrace soutěžících nově probíhají pouze online.',
     heroSub: 'Shuffle & Cutting shapes competition',
     date: '24. října 2026',
     venue: 'OX Club Prague',
@@ -36,46 +78,71 @@ export const content = {
     countdownLabels: { days: 'Dní', hours: 'Hodin', mins: 'Minut', secs: 'Vteřin' },
     nav: [
       { href: '#about', label: 'O battlu' },
-      { href: '#judges', label: 'Judges' },
+      { href: '#rules', label: 'Pravidla' },
+      { href: '#judges', label: 'Porotci' },
       { href: '#program', label: 'Program' },
       { href: '#partners', label: 'Partneři' },
     ],
     aboutEyebrow: 'Battle of Europe',
     aboutTitle: 'Informace o battlu',
     aboutBody: [
-      'Čtvrtý ročník Battle of Europe se odehraje 24. října 2026 v pražském OX Clubu. Hlavními disciplínami jsou oblíbená Battle 1v1 a The Best Team Choreo Competition, ve kterých se nejlepší evropští tanečníci utkají o nadvládu na parketu i o hodnotné ceny.',
-      'Kromě hlavního battlu na tebe čekají workshopy se zkušenými lektory pod taktovkou „Behind the Steps“ — prostor, kde se posuneš dál a načerpáš novou energii i kontakty z celé shuffle & cutting shapes komunity.',
-      'Atmosféra, hudba a tanec na jednom místě. Ať jsi ostřílený dancer, nebo si chceš jen užít show — tady jsi přesně na svém.',
+      'Čtvrtý ročník Battle of Europe se odehraje 24. října 2026 v pražském OX Clubu a opět se můžeš těšit na jedinečnou show! Její součástí bude tradiční Battle 1v1 i The Best Team Choreo Competition, ve kterých se tanečníci utkají o nadvládu nad parketem a hodnotné ceny.',
+      'Kromě hlavního battlu na tebe během celého víkendu čekají také workshopy pod taktovkou letošních porotců, které patří mezi světovou špičku. A vynechat bys neměl ani druhý ročník diskuze Behind the Steps, která proběhne na pátečním meetupu.',
+      'Čekají tě tak celkem tři dny skvělé atmosféry, hudby a tance, během kterých se můžeš posunout dál a poznat další členy komunity z různých koutů světa. Ať jsi ostřílený tanečník nebo si chceš jen užít show – tohle je akce, která by ti neměla ujít.',
     ],
-    aboutStats: [
-      { value: '4.', label: 'Ročník' },
-      { value: '1v1', label: 'Battle formát' },
-      { value: '5', label: 'Judges' },
-      { value: '500+', label: 'Tanečníků' },
+    rulesEyebrow: 'Pravidla',
+    rulesTitle: 'Pravidla soutěží',
+    rulesCta1v1: 'Pravidla 1v1',
+    rulesCtaTeam: 'Pravidla Team Choreo',
+    rules: [
+      {
+        id: 'rules-1v1',
+        title: '1v1',
+        items: [
+          'Akrobatické prvky jsou povoleny jako součást show, nebudou ale hodnoceny.',
+          'Žádné callouty – respektujte soupeře, hodnocení poroty i atmosféru battlu.',
+          'Během vystoupení jednoho tanečníka nesmí druhý tanečník nijak zasahovat do jeho kola.',
+          'Registrace se uzavírá 23. října 2026 ve 23:59.',
+        ],
+      },
+      {
+        id: 'rules-team',
+        title: 'Team Choreo',
+        items: [
+          'Taneční tým se musí skládat ze 3–7 tanečníků.',
+          'Choreografie nesmí být delší než 5 minut.',
+          'Hudba musí být organizátorům zaslána nejpozději do 20. října 2026.',
+          'Registrace se uzavírá 23. října 2026 ve 23:59.',
+        ],
+      },
     ],
     afterEyebrow: 'Aftermovie',
     afterTitle: 'Loňský ročník v kostce',
     afterPlay: 'Přehrát aftermovie',
-    judgesEyebrow: 'Judges',
-    judgesTitle: 'Naši zkušení judges',
+    judgesEyebrow: 'Porotci',
+    judgesTitle: 'Naši zkušení porotci',
+    judgeTbc: 'Bude oznámeno',
+    judgeMore: 'Číst více',
+    judgeLess: 'Zabalit',
     programEyebrow: 'Program',
     programTitle: 'Program víkendu',
     partnersEyebrow: 'Partneři',
     partnersTitle: 'Bez nich by to nešlo',
     orgEyebrow: 'Pořadatelé',
-    orgTitle: 'Kdo za Battle of Europe stojí',
+    orgTitle: 'Kdo stojí za Battle of Europe?',
     orgBody: [
-      'Jsme Matyáš a Daniel a jsme moc rádi, že se Battle of Europe bude konat v Praze už počtvrté!',
-      'Na taneční scéně působíme přes 9 let – od vedení kurzů shufflu všech úrovní až po organizaci menších battlů, které postupně vyrostly v dnešní velkou evropskou událost.',
-      'Naším cílem je přinášet taneční komunitě nejen skvělý zážitek a jedinečnou show, ale i prostor pro ty nejlepší taneční výkony v krásném prostředí. Každý ročník posouváme hranice dál – chceme, aby byl Battle of Europe pokaždé větší, silnější a nezapomenutelnější!',
+      'Battle of Europe bude v Praze již počtvrté organizovat tým z Kalafa & Batela Shuffle School. Tato škola působí na taneční scéně více než 9 let a jejími kurzy napříč Českem prošlo více než 2 000 lidí.',
     ],
+    orgQuote:
+      'Chceme, aby Battle of Europe byl jedinečným zážitkem pro každého, kdo na něj dorazí – ať už jde o diváka nebo soutěžícího. Každý ročník posouváme dál, aby se k nám lidé rádi vraceli a věděli, že na ně čeká nezapomenutelný víkend.',
+    orgQuoteAuthor: 'Matyáš a Daniel, zakladatelé Kalafa & Batela Shuffle School',
     orgContacts: [
       { label: 'E-mail pro dotazy k battlu', value: 'shuffleprague@gmail.com', href: 'mailto:shuffleprague@gmail.com' },
       { label: 'E-mail pro obecné dotazy', value: 'shufflekalafa@gmail.com', href: 'mailto:shufflekalafa@gmail.com' },
       { label: 'Telefon', value: '+420 775 611 192', href: 'tel:+420775611192' },
     ],
     ticketsTitle: 'Buď u toho',
-    ticketsSub: 'Vstupenky v omezeném počtu. Zajisti si své místo na parketu.',
+    ticketsSub: 'Vstupenky jsou v omezeném počtu. Zajisti si tu svoji.',
     footerTag: 'Shuffle & cutting shapes battle v srdci Prahy.',
     footerNav: 'Navigace',
     footerLegal: 'Dokumenty',
@@ -87,9 +154,9 @@ export const content = {
         label: 'Pátek',
         sub: '1. den',
         items: [
-          { time: '16:30 – 18:00', title: 'Ruko — Workshop', desc: 'Creativity, connections, footwork combos', place: 'OX Club, Praha' },
-          { time: '18:00 – 19:30', title: 'Oddio — Workshop', desc: 'Groove & flow sequences', place: 'OX Club, Praha' },
-          { time: '20:00', title: 'Welcome jam', desc: 'Otevřený parket & registrace', place: 'OX Club, Praha' },
+          { time: '16:30 – 18:00', title: 'Workshop', desc: 'Creativity, connections, footwork combos', place: 'OX Club, Praha' },
+          { time: '18:00 – 19:30', title: 'Workshop', desc: 'Groove & flow sequences', place: 'OX Club, Praha' },
+          { time: '20:00', title: 'Behind the Steps', desc: 'Druhý ročník diskuze na pátečním meetupu', place: 'OX Club, Praha' },
         ],
       },
       {
@@ -117,7 +184,8 @@ export const content = {
   },
   en: {
     cta: 'Get ticket',
-    announce: 'New: battle registration is online only, ahead of the event.',
+    announceLabel: 'Notice',
+    announce: 'Competitor registration is now online only.',
     heroSub: 'Shuffle & Cutting shapes competition',
     date: 'October 24, 2026',
     venue: 'OX Club Prague',
@@ -128,6 +196,7 @@ export const content = {
     countdownLabels: { days: 'Days', hours: 'Hours', mins: 'Mins', secs: 'Secs' },
     nav: [
       { href: '#about', label: 'About' },
+      { href: '#rules', label: 'Rules' },
       { href: '#judges', label: 'Judges' },
       { href: '#program', label: 'Program' },
       { href: '#partners', label: 'Partners' },
@@ -135,39 +204,63 @@ export const content = {
     aboutEyebrow: 'Battle of Europe',
     aboutTitle: 'About the battle',
     aboutBody: [
-      'The fourth edition of Battle of Europe goes down on October 24, 2026 at OX Club Prague. The headline formats are the beloved 1v1 Battle and The Best Team Choreo Competition, where Europe’s best dancers clash for the crown and serious prizes.',
-      'Beyond the main battle, expect workshops with seasoned coaches under the “Behind the Steps” banner — a space to level up and soak in fresh energy and connections from the whole shuffle & cutting shapes scene.',
-      'Atmosphere, music and dance in one place. Whether you’re a seasoned dancer or just here for the show — this is your spot.',
+      'The fourth edition of Battle of Europe goes down on October 24, 2026 at OX Club Prague — and once again you can look forward to a one-of-a-kind show. It features the traditional Battle 1v1 as well as The Best Team Choreo Competition, where dancers clash for control of the floor and serious prizes.',
+      'Beyond the main battle, the whole weekend brings workshops led by this year’s judges, who rank among the very best in the world. And don’t skip the second edition of the Behind the Steps discussion, taking place at Friday’s meetup.',
+      'That adds up to three full days of great atmosphere, music and dance, where you can level up and meet more of the community from every corner of the world. Whether you’re a seasoned dancer or just here for the show — this is one event you shouldn’t miss.',
     ],
-    aboutStats: [
-      { value: '4th', label: 'Edition' },
-      { value: '1v1', label: 'Battle format' },
-      { value: '5', label: 'Judges' },
-      { value: '500+', label: 'Dancers' },
+    rulesEyebrow: 'Rules',
+    rulesTitle: 'Competition rules',
+    rulesCta1v1: '1v1 rules',
+    rulesCtaTeam: 'Team Choreo rules',
+    rules: [
+      {
+        id: 'rules-1v1',
+        title: '1v1',
+        items: [
+          'Acrobatic moves are allowed as part of the show, but they will not be scored.',
+          'No callouts — respect your opponent, the judges’ decisions and the atmosphere of the battle.',
+          'While one dancer is performing, the other must not interfere with their round in any way.',
+          'Registration closes on October 23, 2026 at 23:59.',
+        ],
+      },
+      {
+        id: 'rules-team',
+        title: 'Team Choreo',
+        items: [
+          'A team must consist of 3–7 dancers.',
+          'The choreography must not be longer than 5 minutes.',
+          'Music must be sent to the organizers no later than October 20, 2026.',
+          'Registration closes on October 23, 2026 at 23:59.',
+        ],
+      },
     ],
     afterEyebrow: 'Aftermovie',
     afterTitle: 'Last edition in a nutshell',
     afterPlay: 'Play aftermovie',
     judgesEyebrow: 'Judges',
     judgesTitle: 'Our seasoned judges',
+    judgeTbc: 'To be announced',
+    judgeMore: 'Read more',
+    judgeLess: 'Collapse',
     programEyebrow: 'Program',
     programTitle: 'Weekend program',
     partnersEyebrow: 'Partners',
     partnersTitle: 'It wouldn’t work without them',
     orgEyebrow: 'Organizers',
-    orgTitle: 'Who’s behind Battle of Europe',
+    orgTitle: 'Who’s behind Battle of Europe?',
     orgBody: [
-      'We’re Matyáš and Daniel, and we’re thrilled that Battle of Europe is coming to Prague for the fourth time!',
-      'We’ve been part of the dance scene for over 9 years – from running shuffle courses for all levels to organizing smaller battles that gradually grew into today’s major European event.',
-      'Our goal is to bring the dance community not only a great experience and a unique show, but also space for the very best performances in a beautiful setting. Every edition we push the limits further – we want Battle of Europe to be bigger, stronger and more unforgettable every single time!',
+      'Battle of Europe is organized in Prague for the fourth time by the team from Kalafa & Batela Shuffle School. The school has been part of the dance scene for over 9 years, and more than 2,000 people have gone through its courses across Czechia.',
     ],
+    orgQuote:
+      'We want Battle of Europe to be a unique experience for everyone who shows up — whether they’re in the crowd or on the floor. Every edition we push it further, so that people love coming back and know an unforgettable weekend is waiting for them.',
+    orgQuoteAuthor: 'Matyáš and Daniel, founders of Kalafa & Batela Shuffle School',
     orgContacts: [
       { label: 'Battle enquiries', value: 'shuffleprague@gmail.com', href: 'mailto:shuffleprague@gmail.com' },
       { label: 'General enquiries', value: 'shufflekalafa@gmail.com', href: 'mailto:shufflekalafa@gmail.com' },
       { label: 'Phone', value: '+420 775 611 192', href: 'tel:+420775611192' },
     ],
     ticketsTitle: 'Be there',
-    ticketsSub: 'Limited tickets available. Secure your spot on the floor.',
+    ticketsSub: 'Tickets are limited. Secure yours.',
     footerTag: 'Shuffle & cutting shapes battle in the heart of Prague.',
     footerNav: 'Navigation',
     footerLegal: 'Documents',
@@ -179,9 +272,9 @@ export const content = {
         label: 'Friday',
         sub: 'Day 1',
         items: [
-          { time: '16:30 – 18:00', title: 'Ruko — Workshop', desc: 'Creativity, connections, footwork combos', place: 'OX Club, Prague' },
-          { time: '18:00 – 19:30', title: 'Oddio — Workshop', desc: 'Groove & flow sequences', place: 'OX Club, Prague' },
-          { time: '20:00', title: 'Welcome jam', desc: 'Open floor & registration', place: 'OX Club, Prague' },
+          { time: '16:30 – 18:00', title: 'Workshop', desc: 'Creativity, connections, footwork combos', place: 'OX Club, Prague' },
+          { time: '18:00 – 19:30', title: 'Workshop', desc: 'Groove & flow sequences', place: 'OX Club, Prague' },
+          { time: '20:00', title: 'Behind the Steps', desc: 'Second edition of the talk at the Friday meetup', place: 'OX Club, Prague' },
         ],
       },
       {
