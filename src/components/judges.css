@@ -3,7 +3,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 22px;
-  align-items: start;
+  /* stretch (not start): every card in a row takes the height of the tallest,
+     regardless of how long the bio/quote is, and stays matched when a quote
+     is expanded */
+  align-items: stretch;
 }
 @media (min-width: 1100px) {
   .judge-grid {
@@ -31,6 +34,9 @@
   aspect-ratio: 4 / 5;
   overflow: hidden;
   background: #000;
+  /* keep the 4:5 frame when the card is stretched — without this the photo
+     would be squashed to absorb the extra height */
+  flex: none;
 }
 .judge-img {
   width: 100%;
