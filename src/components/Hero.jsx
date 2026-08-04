@@ -51,7 +51,9 @@ export default function Hero({ t }) {
         minHeight: '100svh',
         display: 'flex',
         alignItems: 'center',
-        padding: '140px var(--pad) 70px',
+        /* horizontal padding comes from .container on the inner wrapper, so the
+           hero sits on the same grid as the navbar and every other section */
+        padding: '140px 0 70px',
         overflow: 'hidden',
       }}
     >
@@ -101,7 +103,7 @@ export default function Hero({ t }) {
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(5, 5, 10,.5),transparent 30%,rgba(5, 5, 10,.85))' }} />
       </motion.div>
 
-      <motion.div style={{ position: 'relative', zIndex: 3, maxWidth: 1640, margin: '0 auto', width: '100%', y, opacity }}>
+      <motion.div className="container" style={{ position: 'relative', zIndex: 3, y, opacity }}>
         {t.announce && (
           <motion.div
             initial={{ opacity: 0, y: 16 }}

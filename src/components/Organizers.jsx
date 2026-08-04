@@ -19,27 +19,31 @@ export default function Organizers({ t }) {
             position: 'relative',
             borderRadius: 26,
             overflow: 'hidden',
-            background: 'radial-gradient(circle at 50% 35%,#0c2671,#05050a)',
+            // The logo file is a JPEG on solid black, so the stage stays black
+            // behind it — otherwise its square/disc edge shows against a lit
+            // background, which is what made it read as a pasted-on box.
+            background: 'radial-gradient(circle at 50% 45%,#000 0%,#000 46%,#07070e 100%)',
             border: '1px solid rgba(255,255,255,.1)',
             aspectRatio: '4/3',
             display: 'grid',
             placeItems: 'center',
           }}
         >
-          {/* glow */}
-          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(45% 45% at 50% 45%,rgba(28, 86, 255,.35),transparent 70%)', filter: 'blur(20px)' }} />
-          {/* rotating dashed ring */}
+          {/* brand glow, picked up from the red in the logo itself */}
+          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(38% 38% at 50% 46%,rgba(249,4,1,.42),transparent 72%)', filter: 'blur(26px)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(58% 58% at 50% 52%,rgba(28,86,255,.16),transparent 74%)', filter: 'blur(34px)' }} />
+          {/* rotating dashed ring, orbiting outside the mark */}
           <motion.div
             style={{
               position: 'absolute',
               top: '50%',
               left: '50%',
-              width: '78%',
+              width: '86%',
               aspectRatio: '1',
               translateX: '-50%',
               translateY: '-50%',
               borderRadius: '50%',
-              border: '1.5px dashed rgba(255,255,255,.18)',
+              border: '1.5px dashed rgba(255,255,255,.14)',
               rotate: ringRot,
             }}
           />
@@ -48,12 +52,16 @@ export default function Organizers({ t }) {
             alt="Kalafa & Batela Shuffle School"
             style={{
               position: 'relative',
-              width: '52%',
+              width: '68%',
               height: 'auto',
               objectFit: 'contain',
-              borderRadius: '50%',
+              // The logo ships as an opaque JPEG on pure black, which punched a
+              // visible square out of the glow behind it. `screen` drops the
+              // black to transparent and keeps the white/red artwork, so the
+              // mark floats with the glow showing through — no edge, and no
+              // circular crop that would clip the wordmark arc.
+              mixBlendMode: 'screen',
               y: photoY,
-              filter: 'drop-shadow(0 24px 50px rgba(0,0,0,.55))',
             }}
           />
         </Reveal>
