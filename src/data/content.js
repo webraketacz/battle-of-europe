@@ -42,7 +42,10 @@ I’m beyond grateful to join the BoE panel, and thank you to everyone for this 
     name: 'Alison',
     img: './images/judge-alison.jpg',
     country: { cz: '', en: '' },
-    bio: { cz: '', en: '' },
+    bio: {
+      cz: 'Tanečnice s osmi lety na scéně, která tanec propojuje s psychologií – svou profesí. Působí ve Wellbeing Project a její styl staví na čistém freestylu s vlivy waackingu a house.',
+      en: 'A dancer with eight years on the scene who ties dance closely to psychology — her profession. She works at the Wellbeing Project, and her style is built on pure freestyle with waacking and house influences.',
+    },
     quote: `Hi! I’m Alison, and I’ve been a shuffle/cutting shapes dancer for 8 years ❤️
 
 My approach to dance is closely tied to psychology, which is my profession. With that in mind, I work at the Wellbeing Project and develop my dance style from pure freestyle (with waacking and house influences).
