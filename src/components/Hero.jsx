@@ -139,16 +139,19 @@ export default function Hero({ t }) {
           </motion.span>
         </div>
 
-        {/* wordmark reveal: clip up */}
-        <div style={{ overflow: 'hidden', marginTop: 18 }}>
+        {/* wordmark reveal: clip up.
+            This is the page's <h1> — the document had no top-level heading at
+            all before, so screen readers and crawlers jumped straight to h2. */}
+        <h1 style={{ overflow: 'hidden', marginTop: 18, fontSize: 0, lineHeight: 0 }}>
+          <span className="sr-only">Battle of Europe — {t.heroSub}</span>
           <motion.div
             initial={{ y: '105%' }}
             animate={{ y: '0%' }}
             transition={{ duration: 1.1, ease: EASE, delay: 0.45 }}
           >
-            <Wordmark style={{ filter: 'drop-shadow(0 18px 50px rgba(0,0,0,.55))' }} />
+            <Wordmark decorative style={{ filter: 'drop-shadow(0 18px 50px rgba(0,0,0,.55))' }} />
           </motion.div>
-        </div>
+        </h1>
 
         {/* info cards */}
         <div

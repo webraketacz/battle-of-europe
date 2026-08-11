@@ -31,7 +31,7 @@ export default function Partners({ t }) {
             }}
             className="partner-tile"
           >
-            <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,.4)' }}>
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,.58)' }}>
               {p}
             </span>
           </motion.div>

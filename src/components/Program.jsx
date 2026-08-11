@@ -82,8 +82,12 @@ export default function Program({ t }) {
                 </div>
                 <div>
                   <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: 20, textTransform: 'uppercase', letterSpacing: '.02em' }}>{it.title}</h4>
-                  <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, color: 'rgba(255,255,255,.6)', marginTop: 4 }}>{it.desc}</p>
-                  <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,.4)', marginTop: 6 }}>{it.place}</p>
+                  {it.desc && (
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, color: 'rgba(255,255,255,.6)', marginTop: 4 }}>{it.desc}</p>
+                  )}
+                  {it.place && (
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,.58)', marginTop: 6 }}>{it.place}</p>
+                  )}
                 </div>
               </motion.div>
             ))}

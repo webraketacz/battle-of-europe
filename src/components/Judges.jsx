@@ -45,7 +45,7 @@ function JudgeCard({ j, i, lang, t }) {
           <>
             <blockquote className={`judge-quote${expanded ? '' : ' judge-quote--clamped'}`}>{j.quote}</blockquote>
             <button className="judge-more" onClick={() => setExpanded((v) => !v)} aria-expanded={expanded}>
-              {expanded ? t.judgeLess : t.judgeMore}
+              <span>{expanded ? t.judgeLess : t.judgeMore}</span>
             </button>
           </>
         )}

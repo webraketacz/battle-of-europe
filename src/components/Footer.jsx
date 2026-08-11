@@ -66,7 +66,7 @@ export default function Footer({ t }) {
 
       <div
         className="container footer-bottom"
-        style={{ padding: '22px 0 34px', borderTop: '1px solid rgba(255,255,255,.06)', fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,.4)' }}
+        style={{ padding: '22px 0 34px', borderTop: '1px solid rgba(255,255,255,.06)', fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,.58)' }}
       >
         <span>© 2026 Battle of Europe · Shuffle School Kalafa Batela</span>
 

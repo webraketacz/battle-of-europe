@@ -130,7 +130,6 @@
   margin-top: auto;
   background: none;
   border: 0;
-  padding: 0 0 3px;
   cursor: pointer;
   font-family: var(--font-body);
   font-weight: 700;
@@ -138,11 +137,24 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--blue-soft);
+  transition: color 0.25s;
+  /* the button itself was a 25px-tall tap target; padding takes it to 44px
+     while the underline moves to the inner span so it still hugs the text */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0;
+  margin-bottom: -10px;
+}
+.judge-more > span {
   border-bottom: 1px solid rgba(126, 162, 255, 0.4);
-  transition: color 0.25s, border-color 0.25s;
+  padding-bottom: 3px;
+  transition: border-color 0.25s;
 }
 .judge-more:hover {
   color: #fff;
+}
+.judge-more:hover > span {
   border-color: #fff;
 }
 
@@ -165,7 +177,7 @@
   font-family: var(--font-display);
   font-size: clamp(38px, 6vw, 54px);
   letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.42);
   transform: skewX(-6deg);
 }
 .judge-tbc-label {
@@ -173,7 +185,7 @@
   font-size: 12px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.58);
   font-weight: 600;
   text-align: center;
 }

@@ -62,7 +62,10 @@ function Row({ baseVelocity, children, outline }) {
 
 export default function Marquee() {
   return (
+    // purely decorative: hidden from assistive tech so the repeated words
+    // aren't read out over and over
     <section
+      aria-hidden="true"
       style={{
         position: 'relative',
         padding: '36px 0',

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { MotionConfig } from 'framer-motion'
 import { useLenis } from './hooks/useLenis'
 import { content } from './data/content'
 
@@ -32,7 +33,10 @@ export default function App() {
   const toggleLang = () => setLang((l) => (l === 'cz' ? 'en' : 'cz'))
 
   return (
-    <>
+    // reducedMotion="user" makes Framer honour the OS "reduce motion" setting.
+    // The @media rule in global.css only covers CSS animations — every reveal,
+    // parallax and marquee here is JS-driven and ignored it.
+    <MotionConfig reducedMotion="user">
       <Preloader />
       <Cursor />
       <Grain />
@@ -51,6 +55,6 @@ export default function App() {
         <Tickets t={t} />
       </main>
       <Footer t={t} />
-    </>
+    </MotionConfig>
   )
 }
