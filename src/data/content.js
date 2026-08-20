@@ -43,8 +43,8 @@ I’m beyond grateful to join the BoE panel, and thank you to everyone for this 
     img: './images/judge-alison.jpg',
     country: { cz: '', en: '' },
     bio: {
-      cz: 'Tanečnice s osmi lety na scéně, která tanec propojuje s psychologií – svou profesí. Působí ve Wellbeing Project a její styl staví na čistém freestylu s vlivy waackingu a house.',
-      en: 'A dancer with eight years on the scene who ties dance closely to psychology — her profession. She works at the Wellbeing Project, and her style is built on pure freestyle with waacking and house influences.',
+      cz: 'Jedna z nejvýraznějších žen evropské taneční scény – v battlech i mimo ně. Kromě tance se intenzivně zajímá také o wellbeing komunity.',
+      en: 'One of the most distinctive women on the European dance scene — in battles and beyond. Alongside dancing, she is deeply invested in the wellbeing of the community.',
     },
     quote: `Hi! I’m Alison, and I’ve been a shuffle/cutting shapes dancer for 8 years ❤️
 
