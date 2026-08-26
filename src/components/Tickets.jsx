@@ -4,6 +4,7 @@ import Reveal from './Reveal'
 import AnimatedText from './AnimatedText'
 import Countdown from './Countdown'
 import { useLite } from '../hooks/useLite'
+import './tickets.css'
 
 const WIDGET_ORIGIN = 'https://app.terminuj.cz'
 const WIDGET_BASE = `${WIDGET_ORIGIN}/vstupenka/org_ad27c13775de`
@@ -58,61 +59,42 @@ export default function Tickets({ t }) {
           <Countdown labels={t.countdownLabels} />
         </Reveal>
 
-        <div
-          style={{
-            marginTop: 52,
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))',
-            alignItems: 'start',
-            gap: 24,
-            textAlign: 'left',
-          }}
-        >
+        <div className="tickets-grid">
           {types.map((type, i) => (
             <Reveal
               key={type.id}
               delay={0.26 + i * 0.08}
-              // The merch card runs taller than the viewport once its photo is
-              // in; the default 25% threshold would leave its column blank
-              // while the two beside it had already faded in.
-              amount={0.08}
-              style={{
-                background: 'rgba(255,255,255,.03)',
-                border: '1px solid rgba(255,255,255,.1)',
-                borderRadius: 26,
-                padding: 18,
-              }}
+              // "some" (threshold 0), not the default 25%: the merch card is
+              // taller than the viewport, so a ratio-based threshold left it
+              // blank well after it had scrolled into view.
+              amount="some"
+              className={`ticket-card${type.photo ? ' ticket-card--wide' : ''}`}
             >
-              {/* Fixed-height head so the widgets line up across the row even
-                  though the descriptions differ in length. */}
-              <div style={{ padding: '10px 8px 18px', minHeight: 96 }}>
-                <h3 style={{ fontFamily: 'var(--font-display)', textTransform: 'uppercase', fontSize: 26, letterSpacing: '.01em' }}>
-                  {type.label}
-                </h3>
-                <p style={{ marginTop: 8, fontFamily: 'var(--font-body)', fontSize: 15, lineHeight: 1.5, color: 'rgba(255,255,255,.6)' }}>
-                  {type.desc}
-                </p>
+              <div className="ticket-card__head">
+                <h3 className="ticket-card__title">{type.label}</h3>
+                <p className="ticket-card__desc">{type.desc}</p>
               </div>
 
-              <div style={{ background: '#fff', borderRadius: 18, overflow: 'hidden' }}>
-                <iframe
-                  ref={(el) => { frames.current[i] = el }}
-                  src={WIDGETS[type.id]}
-                  title={type.label}
-                  allow="payment"
-                  loading="lazy"
-                  style={{ display: 'block', width: '100%', height: 560, border: 'none' }}
-                />
-              </div>
-
-              {type.photo && (
-                <img
-                  src={type.photo}
-                  alt={type.photoAlt || type.label}
-                  loading="lazy"
-                  style={{ display: 'block', width: '100%', marginTop: 14, borderRadius: 18, border: '1px solid rgba(255,255,255,.1)' }}
-                />
-              )}
+              {(() => {
+                const widget = (
+                  <div className="ticket-card__widget">
+                    <iframe
+                      ref={(el) => { frames.current[i] = el }}
+                      src={WIDGETS[type.id]}
+                      title={type.label}
+                      allow="payment"
+                      loading="lazy"
+                    />
+                  </div>
+                )
+                if (!type.photo) return widget
+                return (
+                  <div className="merch-body">
+                    {widget}
+                    <img className="merch-photo" src={type.photo} alt={type.photoAlt || type.label} loading="lazy" />
+                  </div>
+                )
+              })()}
             </Reveal>
           ))}
         </div>

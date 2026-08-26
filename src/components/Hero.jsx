@@ -103,7 +103,15 @@ export default function Hero({ t }) {
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(5, 5, 10,.5),transparent 30%,rgba(5, 5, 10,.85))' }} />
       </motion.div>
 
-      <motion.div className="container" style={{ position: 'relative', zIndex: 3, y, opacity }}>
+      {/* The parallax fade assumes the hero fits one screen. On a phone it
+          doesn't: the CTA sits near the bottom edge, so scrolling far enough to
+          reach it had already faded the whole block to nothing — an invisible
+          button that still swallowed the tap. Below 900px the navbar has no CTA
+          either, so that left no way to buy until the very bottom of the page. */}
+      <motion.div
+        className="container"
+        style={{ position: 'relative', zIndex: 3, y: lite ? 0 : y, opacity: lite ? 1 : opacity }}
+      >
         {t.announce && (
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -191,34 +199,38 @@ export default function Hero({ t }) {
         </motion.div>
       </motion.div>
 
-      {/* scroll cue */}
-      <motion.a
-        href="#about"
-        aria-label="Scroll"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 1 }}
-        style={{
-          position: 'absolute',
-          bottom: 28,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: 54,
-          height: 54,
-          borderRadius: '50%',
-          border: '1.5px dashed rgba(255,255,255,.4)',
-          display: 'grid',
-          placeItems: 'center',
-          color: '#fff',
-          textDecoration: 'none',
-          animation: 'bobDown 2s ease-in-out infinite',
-          zIndex: 3,
-        }}
-      >
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
-          <path d="M8 2v12M3 9l5 5 5-5" />
-        </svg>
-      </motion.a>
+      {/* Scroll cue — desktop only. At phone widths it sits right on top of the
+          CTA (same z-index, later in the DOM), so it both clipped the button and
+          took taps meant for it. */}
+      {!lite && (
+        <motion.a
+          href="#about"
+          aria-label="Scroll"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.6, duration: 1 }}
+          style={{
+            position: 'absolute',
+            bottom: 28,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 54,
+            height: 54,
+            borderRadius: '50%',
+            border: '1.5px dashed rgba(255,255,255,.4)',
+            display: 'grid',
+            placeItems: 'center',
+            color: '#fff',
+            textDecoration: 'none',
+            animation: 'bobDown 2s ease-in-out infinite',
+            zIndex: 3,
+          }}
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
+            <path d="M8 2v12M3 9l5 5 5-5" />
+          </svg>
+        </motion.a>
+      )}
     </section>
   )
 }

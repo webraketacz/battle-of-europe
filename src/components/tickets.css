@@ -1,0 +1,84 @@
+.tickets-grid {
+  margin-top: 52px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: start;
+  text-align: left;
+}
+/* Spectator and Competitor sit side by side; the merch card below spans both. */
+@media (min-width: 760px) {
+  .tickets-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.ticket-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 26px;
+  padding: 18px;
+}
+.ticket-card--wide {
+  grid-column: 1 / -1;
+}
+
+.ticket-card__head {
+  padding: 10px 8px 18px;
+}
+/* Fixed head height only while the two ticket cards share a row, so their
+   widgets line up despite the descriptions differing in length. */
+@media (min-width: 760px) {
+  .ticket-card:not(.ticket-card--wide) .ticket-card__head {
+    min-height: 96px;
+  }
+}
+
+.ticket-card__title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: 26px;
+  letter-spacing: 0.01em;
+}
+.ticket-card__desc {
+  margin-top: 8px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.ticket-card__widget {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+}
+.ticket-card__widget iframe {
+  display: block;
+  width: 100%;
+  height: 560px;
+  border: none;
+}
+
+/* Merch: form on the left, product shot on the right, both given room to breathe. */
+.merch-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  /* start, not center: the photo is the taller column, so centring the form
+     against it opened a dead gap above the widget */
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .merch-body {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    gap: 28px;
+  }
+}
+
+.merch-photo {
+  display: block;
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
