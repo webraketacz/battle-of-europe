@@ -146,6 +146,25 @@ export const content = {
     ],
     ticketsTitle: 'Buď u toho',
     ticketsSub: 'Vstupenky jsou v omezeném počtu. Zajisti si tu svoji.',
+    ticketTypes: [
+      {
+        id: 'spectator',
+        label: 'Divák',
+        desc: 'Pro všechny, kdo si chtějí battle užít z hlediště.',
+      },
+      {
+        id: 'competitor',
+        label: 'Soutěžící',
+        desc: 'Registrace do battlu. Uzavírá se 23. října 2026 ve 23:59.',
+      },
+      {
+        id: 'merch',
+        label: 'Tričko',
+        desc: 'Oficiální tričko Battle of Europe 2026.',
+        photo: './images/merch-tshirt.jpg',
+        photoAlt: 'Oficiální tričko Battle of Europe 2026 zepředu a zezadu',
+      },
+    ],
     footerTag: 'Shuffle & cutting shapes battle v srdci Prahy.',
     footerNav: 'Navigace',
     footerLegal: 'Dokumenty',
@@ -268,6 +287,25 @@ export const content = {
     ],
     ticketsTitle: 'Be there',
     ticketsSub: 'Tickets are limited. Secure yours.',
+    ticketTypes: [
+      {
+        id: 'spectator',
+        label: 'Spectator',
+        desc: 'For everyone who wants to enjoy the battle from the crowd.',
+      },
+      {
+        id: 'competitor',
+        label: 'Competitor',
+        desc: 'Battle registration. Closes on October 23, 2026 at 23:59.',
+      },
+      {
+        id: 'merch',
+        label: 'T-shirt',
+        desc: 'The official Battle of Europe 2026 tee.',
+        photo: './images/merch-tshirt.jpg',
+        photoAlt: 'The official Battle of Europe 2026 t-shirt, front and back',
+      },
+    ],
     footerTag: 'Shuffle & cutting shapes battle in the heart of Prague.',
     footerNav: 'Navigation',
     footerLegal: 'Documents',
