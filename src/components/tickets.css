@@ -1,15 +1,24 @@
+/* Terminuj's own page caps its content at max-width:460px, so a wider iframe
+   only buys centred empty space — no URL param lifts it. The cards are sized to
+   that instead (460 + the 18px card padding either side), which leaves the
+   widget filling its card with just the padding showing. */
 .tickets-grid {
-  margin-top: 52px;
+  --widget-w: 460px;
+  --card-w: calc(var(--widget-w) + 36px);
+  margin: 52px auto 0;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, var(--card-w));
+  justify-content: center;
   gap: 24px;
   align-items: start;
   text-align: left;
+  max-width: var(--card-w);
 }
 /* Spectator and Competitor sit side by side; the merch card below spans both. */
 @media (min-width: 760px) {
   .tickets-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, var(--card-w)));
+    max-width: calc(var(--card-w) * 2 + 24px);
   }
 }
 
@@ -72,7 +81,8 @@
 }
 @media (min-width: 900px) {
   .merch-body {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    /* Widget column pinned to the same 460px; the photo takes what's left. */
+    grid-template-columns: minmax(0, var(--widget-w)) minmax(0, 1fr);
     gap: 28px;
   }
 }
