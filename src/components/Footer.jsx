@@ -70,18 +70,33 @@ export default function Footer({ t }) {
       >
         <span>© 2026 Battle of Europe · Shuffle School Kalafa Batela</span>
 
-        <Magnetic strength={0.3}>
-          <a href="https://mjdesign.cz" target="_blank" rel="noopener noreferrer" className="made-by" aria-label="Made by Mjdesign">
-            <span className="made-by__label">Made by</span>
-            <span className="made-by__brand">
-              <span className="made-by__dot" />
-              Mjdesign
-            </span>
-            <svg className="made-by__arrow" width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8">
-              <path d="M2.5 9.5L9.5 2.5M4 2.5h5.5V8" />
-            </svg>
-          </a>
-        </Magnetic>
+        <div className="footer-credits">
+          <Magnetic strength={0.3}>
+            <a href="https://mjdesign.cz" target="_blank" rel="noopener noreferrer" className="made-by" aria-label="Made by Mjdesign">
+              <span className="made-by__label">Made by</span>
+              <span className="made-by__brand">
+                <span className="made-by__dot" />
+                Mjdesign
+              </span>
+              <svg className="made-by__arrow" width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M2.5 9.5L9.5 2.5M4 2.5h5.5V8" />
+              </svg>
+            </a>
+          </Magnetic>
+
+          <Magnetic strength={0.3}>
+            <a href="https://terminuj.cz" target="_blank" rel="noopener noreferrer" className="made-by made-by--alt" aria-label="Powered by Termínuj.cz">
+              <span className="made-by__label">Powered by</span>
+              <span className="made-by__brand">
+                <span className="made-by__dot" />
+                Termínuj.cz
+              </span>
+              <svg className="made-by__arrow" width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M2.5 9.5L9.5 2.5M4 2.5h5.5V8" />
+              </svg>
+            </a>
+          </Magnetic>
+        </div>
       </div>
     </footer>
   )

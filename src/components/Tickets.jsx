@@ -8,15 +8,14 @@ import './tickets.css'
 
 const WIDGET_ORIGIN = 'https://app.terminuj.cz'
 const WIDGET_BASE = `${WIDGET_ORIGIN}/vstupenka/org_ad27c13775de`
-const WIDGET_THEME =
-  'backgroundColor=%23ffffff&textColor=%23111827&buttonTextColor=%23ffffff&borderRadius=18&lang=en'
 
-// Terminuj embeds, keyed by the ticket ids in content.js. Each one posts a
-// `terminuj:resize` message up to us as its own content grows or shrinks.
+// Terminuj embeds, keyed by the ticket ids in content.js. All three run on
+// Terminuj's own theme — no colour overrides. Each posts a `terminuj:resize`
+// message up to us as its own content grows or shrinks.
 const WIDGETS = {
-  spectator: `${WIDGET_BASE}/tt_42aa5f68eff2_a?primaryColor=%23f90401&buttonColor=%23f90401&${WIDGET_THEME}`,
-  competitor: `${WIDGET_BASE}/tt_42aa5f68eff2_b?primaryColor=%237c3aed&buttonColor=%237c3aed&${WIDGET_THEME}`,
-  merch: `${WIDGET_BASE}/mrch_788e5e1fe0ae?primaryColor=%237c3aed&buttonColor=%237c3aed&${WIDGET_THEME}`,
+  spectator: `${WIDGET_BASE}/tt_42aa5f68eff2_a?lang=en`,
+  competitor: `${WIDGET_BASE}/tt_42aa5f68eff2_b?lang=en`,
+  merch: `${WIDGET_BASE}/mrch_788e5e1fe0ae?lang=en`,
 }
 
 export default function Tickets({ t }) {
@@ -98,6 +97,16 @@ export default function Tickets({ t }) {
             </Reveal>
           ))}
         </div>
+
+        {t.ticketingBy && (
+          <Reveal as="p" delay={0.34} amount="some" className="ticketing-by">
+            {t.ticketingBy.before}
+            <a href="https://terminuj.cz" target="_blank" rel="noopener noreferrer">
+              {t.ticketingBy.brand}
+            </a>
+            {t.ticketingBy.after}
+          </Reveal>
+        )}
       </div>
     </section>
   )

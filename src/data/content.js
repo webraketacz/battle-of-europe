@@ -64,7 +64,13 @@ export const socials = [
 ];
 
 export const payments = ['VISA', 'Mastercard', 'Apple Pay', 'GoPay'];
-export const partners = ['Partner', 'Partner', 'Partner', 'Partner', 'Partner', 'Partner'];
+// Partner logos are all white-on-transparent, so they sit straight on the dark
+// tiles. `href` is optional — only set it where we have the partner's own link.
+export const partners = [
+  { name: 'Artem Unity', logo: './images/partner-artem-unity.svg' },
+  { name: 'FlixBus', logo: './images/partner-flixbus.png' },
+  { name: 'Termínuj.cz', logo: './images/partner-terminuj.png', href: 'https://terminuj.cz' },
+];
 
 export const content = {
   cz: {
@@ -146,6 +152,7 @@ export const content = {
     ],
     ticketsTitle: 'Buď u toho',
     ticketsSub: 'Vstupenky jsou v omezeném počtu. Zajisti si tu svoji.',
+    ticketingBy: { before: 'Ticketing vám přináší ', brand: 'Termínuj.cz', after: ' — rezervační systém nové generace.' },
     ticketTypes: [
       {
         id: 'spectator',
@@ -287,6 +294,7 @@ export const content = {
     ],
     ticketsTitle: 'Be there',
     ticketsSub: 'Tickets are limited. Secure yours.',
+    ticketingBy: { before: 'Ticketing brought to you by ', brand: 'Termínuj.cz', after: ' — the next-generation booking system.' },
     ticketTypes: [
       {
         id: 'spectator',
