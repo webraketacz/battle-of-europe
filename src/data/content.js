@@ -27,8 +27,8 @@ See you all very soon! Ready to give it everything on the dance floor! 🔥`,
     img: './images/judge-ciara.jpg',
     country: { cz: 'USA', en: 'USA' },
     bio: {
-      cz: 'Porotkyně, která za námi přiletí až z amerického Texasu, kde působí také jako lektorka. Battlové zkušenosti má jako soutěžící i porotce.',
-      en: 'A judge flying in all the way from Texas, where she also teaches. She brings battle experience from both sides — as a competitor and as a judge.',
+      cz: 'Porotkyně, která za námi přiletí až z amerického Texasu, kde založila vlastní taneční studio. Je americkou šampionkou z roku 2022 a battlové zkušenosti již opakovaně sbírala také jako porotkyně.',
+      en: 'A judge flying in all the way from Texas, where she founded her own dance studio. She is a 2022 US champion and has repeatedly sat on the judging panel at battles.',
     },
     quote: `Hello everyone! ✨
 
