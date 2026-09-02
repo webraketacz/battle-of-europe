@@ -153,19 +153,39 @@ export const content = {
     ticketsTitle: 'Buď u toho',
     ticketsSub: 'Vstupenky jsou v omezeném počtu. Zajisti si tu svoji.',
     ticketingBy: { before: 'Ticketing vám přináší ', brand: 'Termínuj.cz', after: ' — rezervační systém nové generace.' },
+    ticketGroups: [
+      { id: 'tickets', label: 'Vstupenky' },
+      { id: 'bundles', label: 'Balíčky' },
+      { id: 'merch', label: 'Tričko' },
+    ],
     ticketTypes: [
       {
         id: 'spectator',
+        group: 'tickets',
         label: 'Divák',
         desc: 'Pro všechny, kdo si chtějí battle užít z hlediště.',
       },
       {
         id: 'competitor',
+        group: 'tickets',
         label: 'Soutěžící',
         desc: 'Registrace do battlu. Uzavírá se 23. října 2026 ve 23:59.',
       },
       {
+        id: 'bundleSpectator',
+        group: 'bundles',
+        label: 'Divák + tričko',
+        desc: 'Vstupenka pro diváky a k tomu oficiální tričko v jednom balíčku.',
+      },
+      {
+        id: 'bundleCompetitor',
+        group: 'bundles',
+        label: 'Soutěžící + tričko',
+        desc: 'Registrace do battlu a k tomu oficiální tričko v jednom balíčku.',
+      },
+      {
         id: 'merch',
+        group: 'merch',
         label: 'Tričko',
         desc: 'Oficiální tričko Battle of Europe 2026.',
         photo: './images/merch-tshirt.jpg',
@@ -295,19 +315,39 @@ export const content = {
     ticketsTitle: 'Be there',
     ticketsSub: 'Tickets are limited. Secure yours.',
     ticketingBy: { before: 'Ticketing brought to you by ', brand: 'Termínuj.cz', after: ' — the next-generation booking system.' },
+    ticketGroups: [
+      { id: 'tickets', label: 'Tickets' },
+      { id: 'bundles', label: 'Bundles' },
+      { id: 'merch', label: 'T-shirt' },
+    ],
     ticketTypes: [
       {
         id: 'spectator',
+        group: 'tickets',
         label: 'Spectator',
         desc: 'For everyone who wants to enjoy the battle from the crowd.',
       },
       {
         id: 'competitor',
+        group: 'tickets',
         label: 'Competitor',
         desc: 'Battle registration. Closes on October 23, 2026 at 23:59.',
       },
       {
+        id: 'bundleSpectator',
+        group: 'bundles',
+        label: 'Spectator + T-shirt',
+        desc: 'A spectator ticket and the official tee in one bundle.',
+      },
+      {
+        id: 'bundleCompetitor',
+        group: 'bundles',
+        label: 'Competitor + T-shirt',
+        desc: 'Battle registration and the official tee in one bundle.',
+      },
+      {
         id: 'merch',
+        group: 'merch',
         label: 'T-shirt',
         desc: 'The official Battle of Europe 2026 tee.',
         photo: './images/merch-tshirt.jpg',
