@@ -137,9 +137,13 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* No background of our own: each widget paints its own, and they no longer all
-   run the same theme. overflow:hidden is what rounds the iframe's corners. */
+/* The box is sized to the tallest widget of the group (inline style) and the
+   frame is centred in it, so two widgets of different content length still read
+   as one height. The background is the widget page's own, which is what makes
+   the padding invisible. overflow:hidden rounds the iframe's corners. */
 .ticket-card__widget {
+  display: flex;
+  align-items: center;
   border-radius: 18px;
   overflow: hidden;
 }

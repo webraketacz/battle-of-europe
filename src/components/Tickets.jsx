@@ -23,6 +23,10 @@ const WIDGETS = {
 // Terminuj's snippet ships this as the iframe height before any resize message
 // arrives; keeping it as the floor stops the cards jumping on first paint.
 const MIN_WIDGET_H = 560
+// The widget page's own background. The frame is only as tall as its content,
+// so when we pad a shorter widget out to its neighbour's height, painting the
+// gap in this colour is what keeps the seam invisible.
+const WIDGET_BG = '#1d1c1b'
 
 export default function Tickets({ t }) {
   const lite = useLite()
@@ -81,8 +85,10 @@ export default function Tickets({ t }) {
   }, [])
 
   // Cards in a group share the tallest widget's height so a row never ends up
-  // ragged — the extra space is the widget's own background, so it reads as one
-  // block rather than two mismatched ones.
+  // ragged. The frames keep their own natural heights and are centred in that
+  // box instead of being stretched: a Terminuj widget draws its panel at
+  // content height and leaves the rest of the frame empty, so stretching the
+  // shorter one only parked a dead strip under its panel.
   const groupHeight = (group) =>
     Math.max(MIN_WIDGET_H, ...group.items.map((item) => heights[item.id] || 0))
 
@@ -155,14 +161,14 @@ export default function Tickets({ t }) {
 
                     {(() => {
                       const widget = (
-                        <div className="ticket-card__widget">
+                        <div className="ticket-card__widget" style={{ height, background: WIDGET_BG }}>
                           <iframe
                             ref={(el) => { frames.current[type.id] = el }}
                             src={WIDGETS[type.id]}
                             title={type.label}
                             allow="payment"
                             loading="lazy"
-                            style={{ height }}
+                            style={{ height: heights[type.id] || MIN_WIDGET_H }}
                           />
                         </div>
                       )
