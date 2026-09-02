@@ -1,0 +1,80 @@
+/* Three tiles to a row on desktop, so the six of them read as two even rows
+   rather than whatever auto-fit makes of the container width. */
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+@media (max-width: 900px) {
+  .partners-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .partners-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.partner-tile {
+  min-height: 170px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0 10px, rgba(255, 255, 255, 0.05) 10px 20px);
+  display: grid;
+  place-items: center;
+  padding: 28px 26px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* The logos run from a 5:1 wordmark to a near-square mark. Each is given a
+   width share of its tile (see `logoW` in content.js) and a height cap reins in
+   the tall ones, so they all read at a similar weight. The cap has to be an
+   absolute length: a percentage would resolve against the tile's own
+   content-driven height and be dropped, which let the tall mark stretch its
+   tile out of the row. */
+.partner-tile__logo {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 88px;
+  object-fit: contain;
+}
+
+/* Reserved slots: same tile, nothing in it yet. */
+.partner-tile--empty {
+  opacity: 0.5;
+}
+
+.partner-tile--cta {
+  align-content: center;
+  text-align: center;
+}
+.partner-cta__title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: 21px;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+}
+.partner-cta__lead {
+  margin-top: 10px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.partner-cta__mail {
+  display: inline-block;
+  margin-top: 4px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid var(--red);
+  padding-bottom: 2px;
+  transition: color 0.25s, border-color 0.25s;
+}
+.partner-cta__mail:hover {
+  color: var(--red);
+}

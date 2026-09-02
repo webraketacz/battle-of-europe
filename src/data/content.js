@@ -66,11 +66,23 @@ export const socials = [
 export const payments = ['VISA', 'Mastercard', 'Apple Pay', 'GoPay'];
 // Partner logos are all white-on-transparent, so they sit straight on the dark
 // tiles. `href` is optional — only set it where we have the partner's own link.
+/* `logoW` is the logo's width as a share of its tile: the wordmarks came in at
+   wildly different weights (FlixBus filled its tile, Termínuj sat at half of
+   one), so each is dialled in by hand instead of just running to full width.
+   Artem Unity is a tall mark — it is the one the height cap governs. */
 export const partners = [
   { name: 'Artem Unity', logo: './images/partner-artem-unity.svg' },
-  { name: 'FlixBus', logo: './images/partner-flixbus.png' },
-  { name: 'Termínuj.cz', logo: './images/partner-terminuj.png', href: 'https://terminuj.cz' },
+  { name: 'FlixBus', logo: './images/partner-flixbus.png', logoW: '45%' },
+  { name: 'Termínuj.cz', logo: './images/partner-terminuj.png', logoW: '45%', href: 'https://terminuj.cz' },
 ];
+
+/* Slots kept open for partners still to come; the last tile is the pitch. */
+export const PARTNER_SLOTS = 2;
+export const PARTNER_EMAIL = 'shufflekalafa@gmail.com';
+
+/* Termínuj's offer for our audience. Lives as one quiet strip above the footer
+   credits — the code is click-to-copy, which is the whole interaction. */
+export const PROMO_CODE = 'KALAFA';
 
 export const content = {
   cz: {
@@ -137,6 +149,8 @@ export const content = {
     programTitle: 'Program víkendu',
     partnersEyebrow: 'Partneři',
     partnersTitle: 'Bez nich by to nešlo',
+    partnersCtaTitle: 'Chceš se stát partnerem?',
+    partnersCtaLead: 'Napiš nám:',
     orgEyebrow: 'Pořadatelé',
     orgTitle: 'Kdo stojí za Battle of Europe?',
     orgBody: [
@@ -192,6 +206,15 @@ export const content = {
         photoAlt: 'Oficiální tričko Battle of Europe 2026 zepředu a zezadu',
       },
     ],
+    promo: {
+      eyebrow: 'Bonus od partnera',
+      before: 'S kódem',
+      after: 'máte 3 měsíce zdarma na roční předplatné Business a Prémium na',
+      brand: 'Termínuj.cz',
+      note: 'Platí do vyprodání',
+      copy: 'Zkopírovat kód',
+      copied: 'Zkopírováno',
+    },
     footerTag: 'Shuffle & cutting shapes battle v srdci Prahy.',
     footerNav: 'Navigace',
     footerLegal: 'Dokumenty',
@@ -299,6 +322,8 @@ export const content = {
     programTitle: 'Weekend program',
     partnersEyebrow: 'Partners',
     partnersTitle: 'It wouldn’t work without them',
+    partnersCtaTitle: 'Want to become a partner?',
+    partnersCtaLead: 'Write to us:',
     orgEyebrow: 'Organizers',
     orgTitle: 'Who’s behind Battle of Europe?',
     orgBody: [
@@ -354,6 +379,15 @@ export const content = {
         photoAlt: 'The official Battle of Europe 2026 t-shirt, front and back',
       },
     ],
+    promo: {
+      eyebrow: 'Partner bonus',
+      before: 'With the code',
+      after: 'you get 3 months free on the annual Business and Premium plan at',
+      brand: 'Termínuj.cz',
+      note: 'While stocks last',
+      copy: 'Copy code',
+      copied: 'Copied',
+    },
     footerTag: 'Shuffle & cutting shapes battle in the heart of Prague.',
     footerNav: 'Navigation',
     footerLegal: 'Documents',

@@ -779,3 +779,97 @@ button {
     transition-duration: 0.001ms !important;
   }
 }
+
+/* ---------- partner promo strip ---------- */
+/* One quiet line above the footer credits, in Termínuj's own accent so it
+   reads as coming from the brand credited right below it rather than as an
+   ad dropped on the page. The code is the only thing that moves: click it and
+   it copies itself. */
+.promo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  margin-bottom: 18px;
+  padding: 13px 18px;
+  border: 1px solid rgba(255, 90, 60, 0.2);
+  border-left: 2px solid rgba(255, 90, 60, 0.75);
+  border-radius: 4px 14px 14px 4px;
+  background: linear-gradient(90deg, rgba(255, 90, 60, 0.07), rgba(255, 90, 60, 0.01) 60%, transparent);
+}
+.promo__eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ff9a82;
+}
+.promo__text {
+  flex: 1 1 320px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+}
+.promo__brand {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 90, 60, 0.55);
+  transition: color 0.25s, border-color 0.25s;
+}
+.promo__brand:hover {
+  color: #ff9a82;
+  border-color: #ff9a82;
+}
+.promo__note {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  white-space: nowrap;
+}
+
+/* The code itself: a dashed chip that says "take me" without shouting. */
+.promo__code {
+  position: relative;
+  appearance: none;
+  cursor: pointer;
+  padding: 3px 11px;
+  border-radius: 7px;
+  border: 1px dashed rgba(255, 90, 60, 0.6);
+  background: rgba(255, 90, 60, 0.1);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #fff;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s var(--ease-out);
+}
+.promo__code:hover {
+  background: rgba(255, 90, 60, 0.2);
+  border-color: #ff5a3c;
+  transform: translateY(-1px);
+}
+.promo__code.is-copied {
+  border-style: solid;
+  color: transparent;
+}
+/* The confirmation is painted over the chip so the strip never reflows. */
+.promo__copied {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  letter-spacing: 0.04em;
+  color: #ff9a82;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.promo__code.is-copied .promo__copied {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .promo__code {
+    transition: none;
+  }
+}

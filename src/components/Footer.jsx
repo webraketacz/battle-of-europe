@@ -1,8 +1,31 @@
+import { useEffect, useRef, useState } from 'react'
 import Wordmark from './Wordmark'
 import Magnetic from './Magnetic'
-import { socials, payments } from '../data/content'
+import { socials, payments, PROMO_CODE } from '../data/content'
 
 export default function Footer({ t }) {
+  const [copied, setCopied] = useState(false)
+  const timer = useRef()
+  useEffect(() => () => clearTimeout(timer.current), [])
+
+  // Clipboard needs a secure context; on http:// or an old browser the button
+  // falls back to selecting the code so it can still be copied by hand.
+  const copyCode = async (e) => {
+    const el = e.currentTarget
+    try {
+      await navigator.clipboard.writeText(PROMO_CODE)
+      setCopied(true)
+      clearTimeout(timer.current)
+      timer.current = setTimeout(() => setCopied(false), 2000)
+    } catch {
+      const range = document.createRange()
+      range.selectNodeContents(el)
+      const sel = window.getSelection()
+      sel.removeAllRanges()
+      sel.addRange(range)
+    }
+  }
+
   return (
     <footer style={{ position: 'relative', borderTop: '1px solid rgba(255,255,255,.08)', padding: '70px var(--pad) 0', overflow: 'hidden' }}>
       <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 40, padding: 0 }}>
@@ -63,6 +86,31 @@ export default function Footer({ t }) {
       <div style={{ position: 'relative', marginTop: 64, overflow: 'hidden' }}>
         <Wordmark style={{ opacity: 0.07 }} />
       </div>
+
+      {t.promo && (
+        <div className="container promo">
+          <span className="promo__eyebrow">{t.promo.eyebrow}</span>
+          <p className="promo__text">
+            {t.promo.before}{' '}
+            <button
+              type="button"
+              className={`promo__code${copied ? ' is-copied' : ''}`}
+              onClick={copyCode}
+              title={t.promo.copy}
+              aria-label={`${t.promo.copy}: ${PROMO_CODE}`}
+            >
+              {PROMO_CODE}
+              <span className="promo__copied" aria-hidden={!copied}>{t.promo.copied}</span>
+            </button>{' '}
+            {t.promo.after}{' '}
+            <a href="https://terminuj.cz" target="_blank" rel="noopener noreferrer" className="promo__brand">
+              {t.promo.brand}
+            </a>
+            .
+          </p>
+          <span className="promo__note">{t.promo.note}</span>
+        </div>
+      )}
 
       <div
         className="container footer-bottom"
