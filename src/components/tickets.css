@@ -1,7 +1,8 @@
-/* ---------- tab strip ---------- */
-/* One segmented control for the three kinds of purchase: single tickets,
-   bundles, merch. The active pill is a framer-motion layoutId, so it slides
-   between tabs instead of blinking. */
+/* ---------- shortcut strip ---------- */
+/* Jump links to the three kinds of purchase: single tickets, bundles, merch.
+   They only scroll the page — every group is rendered below regardless — so
+   missing the strip costs nobody a product. The pill is a framer-motion
+   layoutId, so it slides between links as you scroll past them. */
 .ticket-tabs {
   margin: 40px auto 0;
   display: flex;
@@ -18,9 +19,12 @@
 
 .ticket-tab {
   position: relative;
+  display: inline-flex;
+  align-items: center;
   appearance: none;
   border: none;
   background: none;
+  text-decoration: none;
   cursor: pointer;
   padding: 11px 24px;
   border-radius: 999px;
@@ -60,40 +64,14 @@
   }
 }
 
-/* ---------- panels ---------- */
-/* The inactive panel stays mounted and laid out — parked off-screen rather
-   than display:none — so its widgets keep reporting their real height and
-   don't reload every time the tab comes back. */
-.tickets-panels {
-  position: relative;
+/* ---------- one block per group, stacked ---------- */
+.tickets-group {
+  /* clears the fixed navbar when a shortcut link scrolls here */
+  scroll-margin-top: 96px;
+  margin-top: 54px;
 }
-.tickets-panel {
-  animation: ticket-panel-in 0.4s var(--ease-out) both;
-}
-.tickets-panel--hidden {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateX(-200vw);
-  animation: none;
-}
-@keyframes ticket-panel-in {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .tickets-panel {
-    animation: none;
-  }
+.tickets-group__label {
+  margin-bottom: 20px;
 }
 
 /* Terminuj's own page caps its content at max-width:460px, so a wider iframe
@@ -103,7 +81,7 @@
 .tickets-grid {
   --widget-w: 460px;
   --card-w: calc(var(--widget-w) + 36px);
-  margin: 34px auto 0;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, var(--card-w));
   justify-content: center;
@@ -114,7 +92,7 @@
   text-align: left;
   max-width: var(--card-w);
 }
-/* The two cards of a tab sit side by side; the merch card spans the full row. */
+/* The two cards of a group sit side by side; the merch card spans the full row. */
 @media (min-width: 760px) {
   .tickets-grid {
     grid-template-columns: repeat(2, minmax(0, var(--card-w)));

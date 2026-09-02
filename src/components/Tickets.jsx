@@ -39,36 +39,29 @@ export default function Tickets({ t }) {
       .filter((g) => g.items.length)
   }, [t])
 
+  // Every group is on the page, one under the other — the strip above them is a
+  // shortcut, not a filter, so nobody who misses it misses a product either.
   const [active, setActive] = useState(groups[0]?.id)
-  // Iframes are only mounted once their tab has been opened, so the first paint
-  // costs two embeds instead of five. Once mounted they stay mounted — the
-  // hidden panel keeps its layout (see .tickets-panel--hidden), which is what
-  // lets a backgrounded widget go on reporting its real height.
-  const [mounted, setMounted] = useState(() => (groups[0] ? [groups[0].id] : []))
+  const groupEls = useRef({})
 
-  // Language switch swaps the whole content object: fall back to the first tab
-  // if the ids ever stop lining up.
   useEffect(() => {
-    if (groups.length && !groups.some((g) => g.id === active)) {
-      setActive(groups[0].id)
-      setMounted((prev) => (prev.includes(groups[0].id) ? prev : [...prev, groups[0].id]))
-    }
-  }, [groups, active])
-
-  const openTab = (id) => {
-    setActive(id)
-    setMounted((prev) => (prev.includes(id) ? prev : [...prev, id]))
-  }
-
-  // Roving arrow keys across the tab strip, the expected behaviour for tabs.
-  const onTabKeyDown = (e, i) => {
-    const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0
-    if (!step) return
-    e.preventDefault()
-    const next = groups[(i + step + groups.length) % groups.length]
-    openTab(next.id)
-    document.getElementById(`ticket-tab-${next.id}`)?.focus()
-  }
+    const els = groups.map((g) => groupEls.current[g.id]).filter(Boolean)
+    if (!els.length) return
+    // Band across the middle of the viewport: whichever group is crossing it
+    // owns the highlight.
+    const io = new IntersectionObserver(
+      (entries) => {
+        const hit = entries.filter((e) => e.isIntersecting)
+        if (!hit.length) return
+        const top = hit.reduce((a, b) => (a.boundingClientRect.top <= b.boundingClientRect.top ? a : b))
+        const id = Object.keys(groupEls.current).find((key) => groupEls.current[key] === top.target)
+        if (id) setActive(id)
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    )
+    els.forEach((el) => io.observe(el))
+    return () => io.disconnect()
+  }, [groups])
 
   // The vendor's copy-paste snippet resizes one hard-coded iframe id, so with
   // several widgets on the page every message would resize all of them to the
@@ -87,7 +80,7 @@ export default function Tickets({ t }) {
     return () => window.removeEventListener('message', onMessage)
   }, [])
 
-  // Cards in a tab share the tallest widget's height so a row never ends up
+  // Cards in a group share the tallest widget's height so a row never ends up
   // ragged — the extra space is the widget's own background, so it reads as one
   // block rather than two mismatched ones.
   const groupHeight = (group) =>
@@ -112,81 +105,81 @@ export default function Tickets({ t }) {
         </Reveal>
 
         {groups.length > 1 && (
-          <Reveal as="div" delay={0.24} className="ticket-tabs" role="tablist" aria-label={t.ticketsTitle}>
-            {groups.map((group, i) => (
-              <button
+          <Reveal as="nav" delay={0.24} className="ticket-tabs" aria-label={t.ticketsTitle}>
+            {groups.map((group) => (
+              // Plain anchors: Lenis picks them up for the animated scroll on
+              // desktop, and they still work if its script never runs.
+              <a
                 key={group.id}
-                id={`ticket-tab-${group.id}`}
-                type="button"
-                role="tab"
-                aria-selected={active === group.id}
-                aria-controls={`ticket-panel-${group.id}`}
-                tabIndex={active === group.id ? 0 : -1}
+                href={`#tickets-${group.id}`}
                 className={`ticket-tab${active === group.id ? ' is-active' : ''}`}
-                onClick={() => openTab(group.id)}
-                onKeyDown={(e) => onTabKeyDown(e, i)}
+                aria-current={active === group.id ? 'true' : undefined}
               >
                 {active === group.id && (
                   <motion.span layoutId="ticket-tab-pill" className="ticket-tab__pill" transition={lite ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 36 }} />
                 )}
                 <span className="ticket-tab__label">{group.label}</span>
-              </button>
+              </a>
             ))}
           </Reveal>
         )}
 
-        <div className="tickets-panels">
-          {groups.map((group) => {
-            if (!mounted.includes(group.id)) return null
-            const isActive = active === group.id
-            const height = groupHeight(group)
-            return (
-              <div
-                key={group.id}
-                id={`ticket-panel-${group.id}`}
-                role="tabpanel"
-                aria-labelledby={`ticket-tab-${group.id}`}
-                aria-hidden={!isActive}
-                // Keeps the backgrounded panel out of the tab order (its
-                // iframes are still in the DOM, just parked off-screen).
-                inert={isActive ? undefined : ''}
-                className={`tickets-panel${isActive ? '' : ' tickets-panel--hidden'}`}
-              >
-                <div className="tickets-grid">
-                  {group.items.map((type) => (
-                    <div key={type.id} className={`ticket-card${type.photo ? ' ticket-card--wide' : ''}`}>
-                      <div className="ticket-card__head">
-                        <h3 className="ticket-card__title">{type.label}</h3>
-                        <p className="ticket-card__desc">{type.desc}</p>
-                      </div>
+        {groups.map((group) => {
+          const height = groupHeight(group)
+          return (
+            <div
+              key={group.id}
+              id={`tickets-${group.id}`}
+              className="tickets-group"
+              ref={(el) => { groupEls.current[group.id] = el }}
+            >
+              <Reveal as="h3" amount="some" className="eyebrow tickets-group__label">
+                {group.label}
+              </Reveal>
 
-                      {(() => {
-                        const widget = (
-                          <div className="ticket-card__widget">
-                            <iframe
-                              ref={(el) => { frames.current[type.id] = el }}
-                              src={WIDGETS[type.id]}
-                              title={type.label}
-                              allow="payment"
-                              style={{ height }}
-                            />
-                          </div>
-                        )
-                        if (!type.photo) return widget
-                        return (
-                          <div className="merch-body">
-                            {widget}
-                            <img className="merch-photo" src={type.photo} alt={type.photoAlt || type.label} loading="lazy" />
-                          </div>
-                        )
-                      })()}
+              <div className="tickets-grid">
+                {group.items.map((type, i) => (
+                  <Reveal
+                    key={type.id}
+                    delay={i * 0.08}
+                    // "some" (threshold 0), not the default 25%: a card can be
+                    // taller than the viewport, and a ratio-based threshold
+                    // left it blank well after it had scrolled into view.
+                    amount="some"
+                    className={`ticket-card${type.photo ? ' ticket-card--wide' : ''}`}
+                  >
+                    <div className="ticket-card__head">
+                      <h4 className="ticket-card__title">{type.label}</h4>
+                      <p className="ticket-card__desc">{type.desc}</p>
                     </div>
-                  ))}
-                </div>
+
+                    {(() => {
+                      const widget = (
+                        <div className="ticket-card__widget">
+                          <iframe
+                            ref={(el) => { frames.current[type.id] = el }}
+                            src={WIDGETS[type.id]}
+                            title={type.label}
+                            allow="payment"
+                            loading="lazy"
+                            style={{ height }}
+                          />
+                        </div>
+                      )
+                      if (!type.photo) return widget
+                      return (
+                        <div className="merch-body">
+                          {widget}
+                          <img className="merch-photo" src={type.photo} alt={type.photoAlt || type.label} loading="lazy" />
+                        </div>
+                      )
+                    })()}
+                  </Reveal>
+                ))}
               </div>
-            )
-          })}
-        </div>
+            </div>
+          )
+        })}
 
         {t.ticketingBy && (
           <Reveal as="p" delay={0.34} amount="some" className="ticketing-by">
