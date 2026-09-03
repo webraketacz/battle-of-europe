@@ -230,7 +230,7 @@ export const content = {
           { time: '17:30 – 19:00', title: 'Workshop 2', desc: 'Lektora oznámíme', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
           { time: '19:00 – 20:30', title: 'Workshop 3', desc: 'Lektora oznámíme', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
           { time: '19:00 – 20:30', title: 'Workshop 4', desc: 'Lektora oznámíme — probíhá souběžně v jiném sále', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
-          { time: '21:00', title: 'Meetup', desc: 'Součástí je druhý ročník diskuze Behind the Steps', place: 'Místo upřesníme' },
+          { time: '21:00 – 00:00', title: 'Meetup', desc: 'Součástí je druhý ročník diskuze Behind the Steps', place: 'Retro Cocktail & Music Bar, Francouzská 75/4, 120 00 Praha — hned vedle OX Clubu' },
         ],
       },
       {
@@ -253,7 +253,9 @@ export const content = {
         label: 'Neděle',
         sub: '3. den',
         items: [
-          { time: 'Upřesníme', title: 'Program upřesníme', desc: 'Předpokládaný konec programu ve 14:00', place: '' },
+          { time: '10:00 – 11:30', title: 'Workshop 1', desc: 'Lektora oznámíme', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
+          { time: '11:30 – 13:00', title: 'Workshop 2', desc: 'Lektora oznámíme', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
+          { time: '13:30 – 15:00', title: 'Behind the Steps × Wellbeing project by Alison', desc: 'Food & Lounge by Shi-Shi', place: 'Francouzská 75/4, 120 00 Praha — hned vedle OX Clubu' },
         ],
       },
     ],
@@ -403,7 +405,7 @@ export const content = {
           { time: '17:30 – 19:00', title: 'Workshop 2', desc: 'Instructor to be announced', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
           { time: '19:00 – 20:30', title: 'Workshop 3', desc: 'Instructor to be announced', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
           { time: '19:00 – 20:30', title: 'Workshop 4', desc: 'Instructor to be announced — runs in parallel in another studio', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
-          { time: '21:00', title: 'Meetup', desc: 'Featuring the second edition of the Behind the Steps talk', place: 'Venue to be announced' },
+          { time: '21:00 – 00:00', title: 'Meetup', desc: 'Featuring the second edition of the Behind the Steps talk', place: 'Retro Cocktail & Music Bar, Francouzská 75/4, 120 00 Prague — right next to OX Club' },
         ],
       },
       {
@@ -426,7 +428,9 @@ export const content = {
         label: 'Sunday',
         sub: 'Day 3',
         items: [
-          { time: 'TBA', title: 'Program to be announced', desc: 'Expected to wrap up at 14:00', place: '' },
+          { time: '10:00 – 11:30', title: 'Workshop 1', desc: 'Instructor to be announced', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
+          { time: '11:30 – 13:00', title: 'Workshop 2', desc: 'Instructor to be announced', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
+          { time: '13:30 – 15:00', title: 'Behind the Steps × Wellbeing project by Alison', desc: 'Food & Lounge by Shi-Shi', place: 'Francouzská 75/4, 120 00 Prague — right next to OX Club' },
         ],
       },
     ],
