@@ -108,7 +108,7 @@ export const content = {
     aboutTitle: 'Informace o battlu',
     aboutBody: [
       'Čtvrtý ročník Battle of Europe se odehraje 24. října 2026 v pražském OX Clubu a opět se můžeš těšit na jedinečnou show! Její součástí bude tradiční Battle 1v1 i The Best Team Choreo Competition, ve kterých se tanečníci utkají o nadvládu nad parketem a hodnotné ceny.',
-      'Kromě hlavního battlu na tebe během celého víkendu čekají také workshopy pod taktovkou letošních porotců, které patří mezi světovou špičku. A vynechat bys neměl ani druhý ročník diskuze Behind the Steps, která proběhne na pátečním meetupu.',
+      'Kromě hlavního battlu na tebe během celého víkendu čekají také workshopy pod taktovkou letošních porotců, které patří mezi světovou špičku. A vynechat bys neměl ani druhý ročník diskuze Behind the Steps, která proběhne v neděli.',
       'Čekají tě tak celkem tři dny skvělé atmosféry, hudby a tance, během kterých se můžeš posunout dál a poznat další členy komunity z různých koutů světa. Ať jsi ostřílený tanečník nebo si chceš jen užít show – tohle je akce, která by ti neměla ujít.',
     ],
     rulesEyebrow: 'Pravidla',
@@ -183,7 +183,7 @@ export const content = {
         id: 'competitor',
         group: 'tickets',
         label: 'Soutěžící',
-        desc: 'Registrace do battlu. Uzavírá se 23. října 2026 ve 23:59.',
+        desc: 'Registrace do battlu. Uzavírá se 23. října 2026 ve 23:59. Pro soutěžící je zajištěno občerstvení.',
       },
       {
         id: 'bundleSpectator',
@@ -195,7 +195,7 @@ export const content = {
         id: 'bundleCompetitor',
         group: 'bundles',
         label: 'Soutěžící + tričko',
-        desc: 'Registrace do battlu a k tomu oficiální tričko v jednom balíčku.',
+        desc: 'Registrace do battlu a k tomu oficiální tričko v jednom balíčku. Pro soutěžící je zajištěno občerstvení.',
       },
       {
         id: 'merch',
@@ -226,11 +226,11 @@ export const content = {
         label: 'Pátek',
         sub: '1. den',
         items: [
-          { time: '16:00 – 17:30', title: 'Workshop 1', desc: 'Lektora oznámíme', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
-          { time: '17:30 – 19:00', title: 'Workshop 2', desc: 'Lektora oznámíme', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
+          { time: '16:00 – 17:30', title: 'Workshop 1', desc: 'Vede Ciara', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
+          { time: '17:30 – 19:00', title: 'Workshop 2', desc: 'Vede Siku', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
           { time: '19:00 – 20:30', title: 'Workshop 3', desc: 'Lektora oznámíme', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
-          { time: '19:00 – 20:30', title: 'Workshop 4', desc: 'Lektora oznámíme — probíhá souběžně v jiném sále', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
-          { time: '21:00 – 00:00', title: 'Meetup', desc: 'Součástí je druhý ročník diskuze Behind the Steps', place: 'Retro Cocktail & Music Bar, Francouzská 75/4, 120 00 Praha — hned vedle OX Clubu' },
+          { time: '19:00 – 20:30', title: 'Workshop 4', desc: 'Vede Ciara — probíhá souběžně v jiném sále', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
+          { time: '21:00 – 00:00', title: 'Meetup', desc: '', place: 'Retro Cocktail & Music Bar, Francouzská 75/4, 120 00 Praha — hned vedle OX Clubu' },
         ],
       },
       {
@@ -255,7 +255,7 @@ export const content = {
         items: [
           { time: '10:00 – 11:30', title: 'Workshop 1', desc: 'Lektora oznámíme', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
           { time: '11:30 – 13:00', title: 'Workshop 2', desc: 'Lektora oznámíme', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
-          { time: '13:30 – 15:00', title: 'Behind the Steps × Wellbeing project by Alison', desc: 'Food & Lounge by Shi-Shi', place: 'Francouzská 75/4, 120 00 Praha — hned vedle OX Clubu' },
+          { time: '14:00 – 15:30', title: 'Behind the Steps × Wellbeing project by Alison', desc: 'Food & Lounge by Shi-Shi', place: 'Francouzská 75/4, 120 00 Praha — hned vedle OX Clubu' },
         ],
       },
     ],
@@ -283,7 +283,7 @@ export const content = {
     aboutTitle: 'About the battle',
     aboutBody: [
       'The fourth edition of Battle of Europe goes down on October 24, 2026 at OX Club Prague — and once again you can look forward to a one-of-a-kind show. It features the traditional Battle 1v1 as well as The Best Team Choreo Competition, where dancers clash for control of the floor and serious prizes.',
-      'Beyond the main battle, the whole weekend brings workshops led by this year’s judges, who rank among the very best in the world. And don’t skip the second edition of the Behind the Steps discussion, taking place at Friday’s meetup.',
+      'Beyond the main battle, the whole weekend brings workshops led by this year’s judges, who rank among the very best in the world. And don’t skip the second edition of the Behind the Steps discussion, taking place on Sunday.',
       'That adds up to three full days of great atmosphere, music and dance, where you can level up and meet more of the community from every corner of the world. Whether you’re a seasoned dancer or just here for the show — this is one event you shouldn’t miss.',
     ],
     rulesEyebrow: 'Rules',
@@ -358,7 +358,7 @@ export const content = {
         id: 'competitor',
         group: 'tickets',
         label: 'Competitor',
-        desc: 'Battle registration. Closes on October 23, 2026 at 23:59.',
+        desc: 'Battle registration. Closes on October 23, 2026 at 23:59. Refreshments are provided for competitors.',
       },
       {
         id: 'bundleSpectator',
@@ -370,7 +370,7 @@ export const content = {
         id: 'bundleCompetitor',
         group: 'bundles',
         label: 'Competitor + T-shirt',
-        desc: 'Battle registration and the official tee in one bundle.',
+        desc: 'Battle registration and the official tee in one bundle. Refreshments are provided for competitors.',
       },
       {
         id: 'merch',
@@ -401,11 +401,11 @@ export const content = {
         label: 'Friday',
         sub: 'Day 1',
         items: [
-          { time: '16:00 – 17:30', title: 'Workshop 1', desc: 'Instructor to be announced', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
-          { time: '17:30 – 19:00', title: 'Workshop 2', desc: 'Instructor to be announced', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
+          { time: '16:00 – 17:30', title: 'Workshop 1', desc: 'Led by Ciara', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
+          { time: '17:30 – 19:00', title: 'Workshop 2', desc: 'Led by Siku', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
           { time: '19:00 – 20:30', title: 'Workshop 3', desc: 'Instructor to be announced', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
-          { time: '19:00 – 20:30', title: 'Workshop 4', desc: 'Instructor to be announced — runs in parallel in another studio', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
-          { time: '21:00 – 00:00', title: 'Meetup', desc: 'Featuring the second edition of the Behind the Steps talk', place: 'Retro Cocktail & Music Bar, Francouzská 75/4, 120 00 Prague — right next to OX Club' },
+          { time: '19:00 – 20:30', title: 'Workshop 4', desc: 'Led by Ciara — runs in parallel in another studio', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
+          { time: '21:00 – 00:00', title: 'Meetup', desc: '', place: 'Retro Cocktail & Music Bar, Francouzská 75/4, 120 00 Prague — right next to OX Club' },
         ],
       },
       {
@@ -430,7 +430,7 @@ export const content = {
         items: [
           { time: '10:00 – 11:30', title: 'Workshop 1', desc: 'Instructor to be announced', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
           { time: '11:30 – 13:00', title: 'Workshop 2', desc: 'Instructor to be announced', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
-          { time: '13:30 – 15:00', title: 'Behind the Steps × Wellbeing project by Alison', desc: 'Food & Lounge by Shi-Shi', place: 'Francouzská 75/4, 120 00 Prague — right next to OX Club' },
+          { time: '14:00 – 15:30', title: 'Behind the Steps × Wellbeing project by Alison', desc: 'Food & Lounge by Shi-Shi', place: 'Francouzská 75/4, 120 00 Prague — right next to OX Club' },
         ],
       },
     ],
