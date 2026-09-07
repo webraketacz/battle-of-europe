@@ -255,7 +255,7 @@ export const content = {
         items: [
           { time: '10:00 – 11:30', title: 'Workshop 1', desc: 'Lektora oznámíme', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
           { time: '11:30 – 13:00', title: 'Workshop 2', desc: 'Lektora oznámíme', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
-          { time: '14:00 – 15:30', title: 'Behind the Steps × Wellbeing project by Alison', desc: 'Food & Lounge by Shi-Shi', place: 'Francouzská 75/4, 120 00 Praha — hned vedle OX Clubu' },
+          { time: '14:00 – 15:30', title: 'Talk: Behind the steps ft. Wellbeing project by Alison', desc: 'Food & Lounge by Shi-Shi', place: 'Francouzská 75/4, 120 00 Praha — hned vedle OX Clubu' },
         ],
       },
     ],
@@ -430,7 +430,7 @@ export const content = {
         items: [
           { time: '10:00 – 11:30', title: 'Workshop 1', desc: 'Instructor to be announced', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
           { time: '11:30 – 13:00', title: 'Workshop 2', desc: 'Instructor to be announced', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
-          { time: '14:00 – 15:30', title: 'Behind the Steps × Wellbeing project by Alison', desc: 'Food & Lounge by Shi-Shi', place: 'Francouzská 75/4, 120 00 Prague — right next to OX Club' },
+          { time: '14:00 – 15:30', title: 'Talk: Behind the steps ft. Wellbeing project by Alison', desc: 'Food & Lounge by Shi-Shi', place: 'Francouzská 75/4, 120 00 Prague — right next to OX Club' },
         ],
       },
     ],
