@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Test — workshopy widget</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 32px 16px;
+        background: #08040d;
+        color: #fff;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+      }
+      h1 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin: 0;
+        opacity: 0.7;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Testovací stránka — widget workshopy</h1>
+
+    <iframe
+      src="https://app.terminuj.cz/workshopy/org_ad27c13775de?lang=en"
+      id="terminuj-workshopy"
+      width="100%"
+      height="720"
+      style="border: none; max-width: 560px; width: 100%; overflow: hidden"
+      frameborder="0"
+      allow="payment"
+      title="Workshopy"
+    ></iframe>
+    <script>
+      ;(function () {
+        window.addEventListener('message', function (e) {
+          if (e.data && e.data.type === 'terminuj:resize' && typeof e.data.height === 'number') {
+            var f = document.getElementById('terminuj-workshopy')
+            if (f) f.style.height = e.data.height + 'px'
+          }
+        })
+      })()
+    </script>
+  </body>
+</html>
