@@ -18,11 +18,23 @@ const WIDGETS = {
   bundleSpectator: `${WIDGET_BASE}/pkg_1787812738999_907bv?lang=en`,
   bundleCompetitor: `${WIDGET_BASE}/pkg_1787812687133_44cqu?lang=en`,
   merch: `${WIDGET_BASE}/mrch_788e5e1fe0ae?lang=en`,
+  // Workshops are their own Terminuj product, not a ticket type, so this one
+  // hangs off /workshopy rather than WIDGET_BASE. It lists every workshop of
+  // the weekend and takes them as a single order.
+  workshops: `${WIDGET_ORIGIN}/workshopy/org_ad27c13775de?lang=en`,
 }
 
 // Terminuj's snippet ships this as the iframe height before any resize message
 // arrives; keeping it as the floor stops the cards jumping on first paint.
 const MIN_WIDGET_H = 560
+// Per-widget floors for the ones MIN_WIDGET_H doesn't suit. The workshops
+// widget never posts a `terminuj:resize` message (checked 23 Sep 2026 against
+// the live embed), so nothing will ever correct its height for us — it has to
+// be tall enough for the full list plus the order form up front, or it scrolls
+// inside its own frame. If Terminuj ever starts sending the message, the
+// reported height takes over and this only covers first paint.
+const FALLBACK_H = { workshops: 1240 }
+const floorFor = (id) => FALLBACK_H[id] || MIN_WIDGET_H
 // The widget page's own background. The frame is only as tall as its content,
 // so when we pad a shorter widget out to its neighbour's height, painting the
 // gap in this colour is what keeps the seam invisible.
@@ -90,7 +102,7 @@ export default function Tickets({ t }) {
   // content height and leaves the rest of the frame empty, so stretching the
   // shorter one only parked a dead strip under its panel.
   const groupHeight = (group) =>
-    Math.max(MIN_WIDGET_H, ...group.items.map((item) => heights[item.id] || 0))
+    Math.max(...group.items.map((item) => heights[item.id] || floorFor(item.id)))
 
   return (
     <section id="tickets" style={{ position: 'relative', textAlign: 'center', padding: '100px var(--pad) 110px', scrollMarginTop: 90, overflow: 'hidden' }}>
@@ -152,7 +164,7 @@ export default function Tickets({ t }) {
                     // taller than the viewport, and a ratio-based threshold
                     // left it blank well after it had scrolled into view.
                     amount="some"
-                    className={`ticket-card${type.photo ? ' ticket-card--wide' : ''}`}
+                    className={`ticket-card${type.photo ? ' ticket-card--wide' : ''}${type.solo ? ' ticket-card--solo' : ''}`}
                   >
                     <div className="ticket-card__head">
                       <h4 className="ticket-card__title">{type.label}</h4>
@@ -168,7 +180,7 @@ export default function Tickets({ t }) {
                             title={type.label}
                             allow="payment"
                             loading="lazy"
-                            style={{ height: heights[type.id] || MIN_WIDGET_H }}
+                            style={{ height: heights[type.id] || floorFor(type.id) }}
                           />
                         </div>
                       )

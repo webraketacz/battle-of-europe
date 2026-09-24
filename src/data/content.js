@@ -169,6 +169,7 @@ export const content = {
     ticketingBy: { before: 'Ticketing vám přináší ', brand: 'Termínuj.cz', after: ' — rezervační systém nové generace.' },
     ticketGroups: [
       { id: 'tickets', label: 'Vstupenky' },
+      { id: 'workshops', label: 'Workshopy' },
       { id: 'bundles', label: 'Balíčky' },
       { id: 'merch', label: 'Tričko' },
     ],
@@ -184,6 +185,13 @@ export const content = {
         group: 'tickets',
         label: 'Soutěžící',
         desc: 'Registrace do battlu. Uzavírá se 23. října 2026 ve 23:59. Pro soutěžící je zajištěno občerstvení.',
+      },
+      {
+        id: 'workshops',
+        group: 'workshops',
+        label: 'Workshopy',
+        desc: 'Workshopy pod vedením porotců, v pátek a v neděli. Vyber si ty, na které chceš přijít — objednáš je všechny najednou.',
+        solo: true,
       },
       {
         id: 'bundleSpectator',
@@ -228,7 +236,7 @@ export const content = {
         items: [
           { time: '16:00 – 17:30', title: 'Workshop 1', desc: 'Vede Ciara', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
           { time: '17:30 – 19:00', title: 'Workshop 2', desc: 'Vede Siku', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
-          { time: '19:00 – 20:30', title: 'Workshop 3', desc: 'Lektora oznámíme', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
+          { time: '19:00 – 20:30', title: 'Workshop 3', desc: 'Vede Tenshi', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
           { time: '19:00 – 20:30', title: 'Workshop 4', desc: 'Vede Ciara — probíhá souběžně v jiném sále', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
           { time: '21:00 – 00:00', title: 'Meetup', desc: '', place: 'Retro Cocktail & Music Bar, Francouzská 75/4, 120 00 Praha — hned vedle OX Clubu' },
         ],
@@ -253,8 +261,8 @@ export const content = {
         label: 'Neděle',
         sub: '3. den',
         items: [
-          { time: '10:00 – 11:30', title: 'Workshop 1', desc: 'Lektora oznámíme', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
-          { time: '11:30 – 13:00', title: 'Workshop 2', desc: 'Lektora oznámíme', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
+          { time: '10:00 – 11:30', title: 'Workshop 1', desc: 'Vede Tenshi', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
+          { time: '11:30 – 13:00', title: 'Workshop 2', desc: 'Vede Fanda', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Praha' },
           { time: '14:00 – 15:30', title: 'Talk: Behind the steps ft. Wellbeing project by Alison', desc: 'Food & Lounge by Shi-Shi', place: 'Francouzská 75/4, 120 00 Praha — hned vedle OX Clubu' },
         ],
       },
@@ -344,6 +352,7 @@ export const content = {
     ticketingBy: { before: 'Ticketing brought to you by ', brand: 'Termínuj.cz', after: ' — the next-generation booking system.' },
     ticketGroups: [
       { id: 'tickets', label: 'Tickets' },
+      { id: 'workshops', label: 'Workshops' },
       { id: 'bundles', label: 'Bundles' },
       { id: 'merch', label: 'T-shirt' },
     ],
@@ -359,6 +368,13 @@ export const content = {
         group: 'tickets',
         label: 'Competitor',
         desc: 'Battle registration. Closes on October 23, 2026 at 23:59. Refreshments are provided for competitors.',
+      },
+      {
+        id: 'workshops',
+        group: 'workshops',
+        label: 'Workshops',
+        desc: 'Workshops led by the judges, on Friday and Sunday. Pick the ones you want to attend — they go in a single order.',
+        solo: true,
       },
       {
         id: 'bundleSpectator',
@@ -403,7 +419,7 @@ export const content = {
         items: [
           { time: '16:00 – 17:30', title: 'Workshop 1', desc: 'Led by Ciara', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
           { time: '17:30 – 19:00', title: 'Workshop 2', desc: 'Led by Siku', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
-          { time: '19:00 – 20:30', title: 'Workshop 3', desc: 'Instructor to be announced', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
+          { time: '19:00 – 20:30', title: 'Workshop 3', desc: 'Led by Tenshi', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
           { time: '19:00 – 20:30', title: 'Workshop 4', desc: 'Led by Ciara — runs in parallel in another studio', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
           { time: '21:00 – 00:00', title: 'Meetup', desc: '', place: 'Retro Cocktail & Music Bar, Francouzská 75/4, 120 00 Prague — right next to OX Club' },
         ],
@@ -428,8 +444,8 @@ export const content = {
         label: 'Sunday',
         sub: 'Day 3',
         items: [
-          { time: '10:00 – 11:30', title: 'Workshop 1', desc: 'Instructor to be announced', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
-          { time: '11:30 – 13:00', title: 'Workshop 2', desc: 'Instructor to be announced', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
+          { time: '10:00 – 11:30', title: 'Workshop 1', desc: 'Led by Tenshi', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
+          { time: '11:30 – 13:00', title: 'Workshop 2', desc: 'Led by Fanda', place: 'Centrum Tance, Václavské náměstí 36, 110 00 Prague' },
           { time: '14:00 – 15:30', title: 'Talk: Behind the steps ft. Wellbeing project by Alison', desc: 'Food & Lounge by Shi-Shi', place: 'Francouzská 75/4, 120 00 Prague — right next to OX Club' },
         ],
       },

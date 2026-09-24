@@ -111,6 +111,15 @@
 .ticket-card--wide {
   grid-column: 1 / -1;
 }
+/* The only card in its group (workshops). Spanning the row and then capping
+   itself at one column keeps it centred under the heading instead of sitting
+   in the left-hand column with a hole beside it. */
+.ticket-card--solo {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: var(--card-w);
+  margin: 0 auto;
+}
 
 .ticket-card__head {
   padding: 10px 8px 18px;
@@ -118,7 +127,7 @@
 /* Fixed head height only while the two ticket cards share a row, so their
    widgets line up despite the descriptions differing in length. */
 @media (min-width: 760px) {
-  .ticket-card:not(.ticket-card--wide) .ticket-card__head {
+  .ticket-card:not(.ticket-card--wide):not(.ticket-card--solo) .ticket-card__head {
     min-height: 96px;
   }
 }
