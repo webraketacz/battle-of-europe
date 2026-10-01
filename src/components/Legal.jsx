@@ -47,10 +47,13 @@ function Block({ block }) {
 
 /**
  * One legal document (terms, payment terms), reached from the footer via a
- * `#/<slug>` hash route. The documents are binding Czech-law texts and are not
- * translated, so the EN side of the site gets a note rather than a translation.
+ * `#/<slug>` hash route. Both languages are kept side by side in the data; the
+ * Czech text is the original the organiser signed off, so the English version
+ * says as much above the document.
  */
 export default function Legal({ doc, lang, backLabel }) {
+  const text = doc[lang] || doc.cz
+
   // Each document opens at its own top, not wherever the landing page was left.
   useEffect(() => {
     if (window.__lenis) window.__lenis.scrollTo(0, { immediate: true })
@@ -59,27 +62,29 @@ export default function Legal({ doc, lang, backLabel }) {
 
   useEffect(() => {
     const previous = document.title
-    document.title = `${doc.title} — Battle of Europe`
+    document.title = `${text.title} — Battle of Europe`
     return () => {
       document.title = previous
     }
-  }, [doc.title])
+  }, [text.title])
 
   return (
     <section className="container legal">
       <Reveal as="div" className="eyebrow" y={18} duration={0.7}>
-        {doc.title}
+        {text.title}
       </Reveal>
-      <AnimatedText text={doc.lead} className="section-title legal-title" delay={0.05} />
+      {/* keyed by language so the mask reveal replays on the translated copy
+          instead of leaving the old headline frozen in place */}
+      <AnimatedText key={lang} text={text.lead} className="section-title legal-title" delay={0.05} />
 
       {lang === 'en' && (
         <p className="legal-note">
-          These terms are the binding Czech-law version and are published in Czech only.
+          This is an English translation of the Czech original. In case of any discrepancy, the Czech version prevails.
         </p>
       )}
 
       <div className="legal-body">
-        {doc.blocks.map((block, i) => (
+        {text.blocks.map((block, i) => (
           <Block key={i} block={block} />
         ))}
       </div>
