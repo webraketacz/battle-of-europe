@@ -229,6 +229,7 @@ export const content = {
     footerFollow: 'Sleduj nás',
     legalTerms: 'Obchodní podmínky',
     legalPayment: 'Platební podmínky',
+    legalBack: 'Zpět na web',
     days: [
       {
         label: 'Pátek',
@@ -412,6 +413,7 @@ export const content = {
     footerFollow: 'Follow us',
     legalTerms: 'Terms & conditions',
     legalPayment: 'Payment terms',
+    legalBack: 'Back to the site',
     days: [
       {
         label: 'Friday',

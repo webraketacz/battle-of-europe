@@ -57,8 +57,8 @@ export default function Footer({ t }) {
         <div>
           <h5 className="footer-h">{t.footerLegal}</h5>
           <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <a href="#" className="footer-link">{t.legalTerms}</a>
-            <a href="#" className="footer-link">{t.legalPayment}</a>
+            <a href="#/obchodni-podminky" className="footer-link">{t.legalTerms}</a>
+            <a href="#/platebni-podminky" className="footer-link">{t.legalPayment}</a>
           </div>
         </div>
 

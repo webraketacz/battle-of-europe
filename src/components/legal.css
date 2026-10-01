@@ -1,0 +1,119 @@
+/* Legal documents (terms, payment terms). Long-form reading, so the measure is
+   capped well below the landing page's full-bleed sections and the type is
+   quieter than anywhere else on the site. */
+.legal {
+  /* clears the fixed navbar */
+  padding: 150px var(--pad) 110px;
+  max-width: 920px;
+}
+
+.legal-title {
+  margin-top: 14px;
+  font-size: clamp(28px, 4vw, 54px);
+  /* These leads are full sentences, not the two-word headings the display face
+     was picked for — keep the lines tight but readable. */
+  line-height: 1.08;
+}
+
+.legal-note {
+  margin-top: 26px;
+  padding: 14px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 2px solid var(--red);
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.legal-body {
+  margin-top: 40px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.legal-h2 {
+  margin: 44px 0 16px;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-size: 22px;
+  color: #fff;
+}
+.legal-h2:first-child {
+  margin-top: 0;
+}
+
+.legal-p {
+  margin-bottom: 14px;
+}
+
+.legal-list {
+  margin: 0 0 18px;
+  padding-left: 20px;
+  list-style: none;
+}
+.legal-list li {
+  position: relative;
+  margin-bottom: 10px;
+}
+.legal-list li::before {
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: 0.68em;
+  width: 6px;
+  height: 2px;
+  background: var(--red);
+}
+
+.legal-address {
+  margin: 18px 0 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.legal-body a,
+.legal-address a {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 90, 60, 0.5);
+  /* URLs in legal text are long and unbreakable — let them wrap rather than
+     push the whole document into a horizontal scroll on a phone. */
+  overflow-wrap: anywhere;
+  transition: color 0.25s, border-color 0.25s;
+}
+.legal-body a:hover,
+.legal-address a:hover {
+  color: #ff5a3c;
+  border-color: #ff5a3c;
+}
+
+.legal-back {
+  display: inline-block;
+  margin-top: 54px;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  transition: color 0.25s;
+}
+.legal-back:hover {
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .legal {
+    padding-top: 120px;
+  }
+  .legal-h2 {
+    font-size: 19px;
+  }
+}

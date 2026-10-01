@@ -34,6 +34,9 @@ export function useLenis() {
       if (!a) return
       const id = a.getAttribute('href')
       if (!id || id === '#') return
+      // `#/slug` is a document route, not an element id — and feeding it to
+      // querySelector throws, which would take the whole handler down.
+      if (id.startsWith('#/')) return
       const target = document.querySelector(id)
       if (!target) return
       e.preventDefault()
