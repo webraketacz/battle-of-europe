@@ -52,8 +52,41 @@ My approach to dance is closely tied to psychology, which is my profession. With
 
 I can’t wait to see you all improvise and take over the dance floor at the upcoming Battle of Europe in Prague! I hope we’ll all have a great time together at this event 🫶🏻🫂`,
   },
-  { tbc: true },
-  { tbc: true },
+  {
+    name: 'Tenshi',
+    img: './images/judge-tenshi.jpg',
+    country: { cz: 'USA', en: 'USA' },
+    bio: {
+      cz: 'Mistr punchlinů a divoká karta každého tanečního parketu, který se shufflu věnuje přes deset let.',
+      en: 'A master of punchlines and the wild card of every dance floor, shuffling for over ten years.',
+    },
+    quote: `Hi, my name is Kean! But others will often call me Tenshi! I’ve been Shuffling for about 10+ years (i honestly lost track).
+
+People will see me as a wild card on the dance floor. I just see myself doing silly things 😭 I’m mostly just expressing and vibing half the time. I just hope to be inspiration to everyone.
+
+I’ve traveled to many places and got to understand so much of the community and I’m happy to see more and more shufflers pop up each and every day.
+With all that said WOOOOOOO CAN’T WAIT TO BE JOINING THE BOE JUDGES!`,
+  },
+  {
+    name: 'Fanda',
+    img: './images/judge-fanda.jpg',
+    country: { cz: 'Česko', en: 'Czech Republic' },
+    bio: {
+      cz: 'V roce 2023 si z BoE odvezl druhé místo. Teď se vrací a usedá do naší poroty.',
+      en: 'In 2023, he took home second place at BoE. Now he’s back and joining our judging panel.',
+    },
+    quote: `My name is Fanda, nice to meet you! I’ve been dancing for 16 years, and I’ve been dedicated to shuffle since 2019.
+
+During my 8 years of ballroom dancing, I won over 40 medals and became the Czech Republic Champion in 2014. In my 8 years of shuffle, I became the 2023 European Vice Champion and founded my own dance school. I’m proud to represent the Czech Republic as a judge at Battle of Europe.
+
+Dance means something different to everyone. To me, it’s mainly an art form. You may know me from before as the dancer behind the mask. I like to say that a name or a face doesn’t really matter. What matters more are the things you can express through dance.
+
+When I dance, I love putting on a show and making people feel emotions. And that’s exactly what I expect from you!
+
+But in the end, life isn’t always that deep. Come to Prague, and maybe you’ll experience some beautiful emotions here too. Fun, friendship, victory, love… Who knows?
+
+See you in Prague! 🇨🇿`,
+  },
 ];
 
 export const socials = [
